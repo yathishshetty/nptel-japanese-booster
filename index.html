@@ -7,6 +7,8 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -21,76 +23,98 @@
         .card {
             background-color: #ffffff;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); /* Stronger shadow */
             padding: 24px;
             margin-bottom: 24px;
-            transition: transform 0.2s ease-in-out;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
         }
         .section-title {
-            font-size: 2.25rem; /* text-4xl */
-            font-weight: 700; /* font-bold */
+            font-size: 2.5rem; /* text-5xl */
+            font-weight: 800; /* font-extrabold */
             color: #1e3a8a; /* Dark blue */
             margin-bottom: 24px;
             text-align: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         .subsection-title {
-            font-size: 1.5rem; /* text-2xl */
-            font-weight: 600; /* font-semibold */
+            font-size: 1.75rem; /* text-3xl */
+            font-weight: 700; /* font-bold */
             color: #3b82f6; /* Blue */
             margin-bottom: 16px;
-            border-bottom: 2px solid #bfdbfe; /* Light blue border */
+            border-bottom: 3px solid #93c5fd; /* Light blue border */
             padding-bottom: 8px;
+            text-align: center;
         }
         .btn {
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
+            padding: 12px 28px; /* Larger padding */
+            border-radius: 10px; /* More rounded */
+            font-weight: 700; /* Bolder text */
             cursor: pointer;
-            transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease-in-out, transform 0.15s ease-in-out, box-shadow 0.2s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Stronger button shadow */
             margin-top: 10px;
+            background-image: linear-gradient(to right, var(--tw-gradient-stops));
         }
         .btn-primary {
-            background-color: #3b82f6; /* Blue */
+            --tw-gradient-from: #3b82f6;
+            --tw-gradient-to: #2563eb;
             color: #ffffff;
         }
         .btn-primary:hover {
-            background-color: #2563eb; /* Darker blue */
-            transform: translateY(-1px);
+            --tw-gradient-from: #2563eb;
+            --tw-gradient-to: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
         .btn-secondary {
-            background-color: #60a5fa; /* Light blue */
+            --tw-gradient-from: #60a5fa;
+            --tw-gradient-to: #3b82f6;
             color: #ffffff;
         }
         .btn-secondary:hover {
-            background-color: #3b82f6; /* Blue */
-            transform: translateY(-1px);
+            --tw-gradient-from: #3b82f6;
+            --tw-gradient-to: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
         .input-field {
-            border: 1px solid #cbd5e1; /* Gray-300 */
-            border-radius: 8px;
-            padding: 10px;
+            border: 2px solid #94a3b8; /* Stronger border */
+            border-radius: 10px; /* More rounded */
+            padding: 12px; /* Larger padding */
             width: 100%;
-            max-width: 300px;
+            max-width: 350px; /* Slightly wider */
             margin-top: 8px;
-            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
+            transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #3b82f6; /* Blue focus border */
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08), 0 0 0 3px rgba(59, 130, 246, 0.25); /* Focus ring */
         }
         .feedback {
-            margin-top: 10px;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-weight: 600;
+            margin-top: 15px; /* More space */
+            padding: 12px 18px; /* Larger padding */
+            border-radius: 10px; /* More rounded */
+            font-weight: 700; /* Bolder */
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: fadeIn 0.3s ease-out;
         }
         .feedback.correct {
             background-color: #d1fae5; /* Green-100 */
             color: #065f46; /* Green-700 */
+            border: 1px solid #34d399; /* Green-400 border */
         }
         .feedback.incorrect {
             background-color: #fee2e2; /* Red-100 */
             color: #b91c1c; /* Red-700 */
+            border: 1px solid #f87171; /* Red-400 border */
         }
         .grid-cols-2 {
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -100,11 +124,31 @@
                 grid-template-columns: 1fr;
             }
         }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .score-display {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            text-align: right;
+            margin-bottom: 1rem;
+        }
+        .question-progress {
+            font-size: 1rem;
+            color: #475569;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
     </style>
 </head>
 <body class="p-4">
     <div class="container">
-        <h1 class="section-title mb-8">Interactive Japanese Learning App</h1>
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="section-title flex-grow">Interactive Japanese Learning App</h1>
+            <div class="score-display">Score: <span id="current-score">0</span></div>
+        </div>
 
         <!-- Navigation -->
         <nav class="mb-8 p-4 bg-blue-100 rounded-lg shadow-md">
@@ -130,6 +174,7 @@
         <!-- Greetings Section -->
         <section id="greetings" class="card">
             <h2 class="subsection-title">1. Japanese Greetings</h2>
+            <p id="greeting-progress" class="question-progress"></p>
             <div class="flex flex-col items-center">
                 <p id="greeting-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
                 <input type="text" id="greeting-answer" class="input-field mb-4" placeholder="Type English here">
@@ -142,6 +187,7 @@
         <!-- Adjectives Section -->
         <section id="adjectives" class="card">
             <h2 class="subsection-title">2. na & 3. i Adjectives</h2>
+            <p id="adjective-progress" class="question-progress"></p>
             <div class="flex flex-col items-center">
                 <p id="adjective-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
                 <input type="text" id="adjective-answer" class="input-field mb-4" placeholder="Type English here">
@@ -154,6 +200,7 @@
         <!-- Body Parts Section -->
         <section id="body-parts" class="card">
             <h2 class="subsection-title">4. Body Parts</h2>
+            <p id="bodypart-progress" class="question-progress"></p>
             <div class="flex flex-col items-center">
                 <p id="bodypart-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
                 <input type="text" id="bodypart-answer" class="input-field mb-4" placeholder="Type English here">
@@ -172,6 +219,7 @@
             </div>
 
             <h3 class="text-xl font-semibold text-gray-700 mb-4">Conjugation Exercise:</h3>
+            <p id="conjugation-progress" class="question-progress"></p>
             <div class="flex flex-col items-center">
                 <p id="conjugation-verb-casual" class="text-2xl font-bold text-blue-800 mb-4">Verb: <span id="current-casual-verb"></span></p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-lg">
@@ -201,6 +249,7 @@
         <!-- Existence Section -->
         <section id="existence" class="card">
             <h2 class="subsection-title">7. Existence (aru/iru)</h2>
+            <p id="existence-progress" class="question-progress"></p>
             <div class="flex flex-col items-center">
                 <p id="existence-sentence" class="text-xl text-gray-700 mb-4"></p>
                 <select id="existence-answer" class="input-field mb-4">
@@ -223,6 +272,7 @@
         <!-- Colors Section -->
         <section id="colors" class="card">
             <h2 class="subsection-title">8. Colors in Japanese</h2>
+            <p id="color-progress" class="question-progress"></p>
             <div class="flex flex-col items-center">
                 <p id="color-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
                 <input type="text" id="color-answer" class="input-field mb-4" placeholder="Type English here">
@@ -235,6 +285,7 @@
         <!-- Family Members Section -->
         <section id="family" class="card">
             <h2 class="subsection-title">9. Family Members</h2>
+            <p id="family-progress" class="question-progress"></p>
             <div class="flex flex-col items-center">
                 <p id="family-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
                 <input type="text" id="family-answer" class="input-field mb-4" placeholder="Type English here">
@@ -247,6 +298,7 @@
         <!-- Daily Expressions Section -->
         <section id="daily-expressions" class="card">
             <h2 class="subsection-title">10. Daily Expressions</h2>
+            <p id="expression-progress" class="question-progress"></p>
             <div class="flex flex-col items-center">
                 <p id="expression-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
                 <input type="text" id="expression-answer" class="input-field mb-4" placeholder="Type English here">
@@ -259,6 +311,7 @@
         <!-- Demonstratives Section -->
         <section id="demonstratives" class="card">
             <h2 class="subsection-title">11. Sore, Kore, Sono, kono, ano</h2>
+            <p id="demonstrative-progress" class="question-progress"></p>
             <div class="flex flex-col items-center">
                 <p id="demonstrative-sentence" class="text-xl text-gray-700 mb-4"></p>
                 <input type="text" id="demonstrative-input" class="input-field mb-4" placeholder="Type the demonstrative (e.g., Kore)">
@@ -311,6 +364,7 @@
                 </ul>
             </div>
             <h3 class="text-xl font-semibold text-gray-700 mb-4">Number Conversion Exercise:</h3>
+            <p id="kanji-number-progress" class="question-progress"></p>
             <div class="flex flex-col items-center">
                 <p id="number-to-convert" class="text-3xl font-bold text-blue-800 mb-4"></p>
                 <input type="text" id="kanji-number-input" class="input-field mb-4" placeholder="Type in Japanese Romaji">
@@ -336,6 +390,7 @@
                 </ul>
             </div>
             <h3 class="text-xl font-semibold text-gray-700 mb-4">Weekly Day Exercise:</h3>
+            <p id="weekly-day-progress" class="question-progress"></p>
             <div class="flex flex-col items-center mb-6">
                 <p id="weekly-day-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
                 <input type="text" id="weekly-day-answer" class="input-field mb-4" placeholder="Type English here">
@@ -361,6 +416,7 @@
                 </div>
             </div>
             <h3 class="text-xl font-semibold text-gray-700 mt-6 mb-4">Date Conversion Exercise:</h3>
+            <p id="date-conversion-progress" class="question-progress"></p>
             <div class="flex flex-col items-center">
                 <p id="date-conversion-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
                 <input type="text" id="date-conversion-answer" class="input-field mb-4" placeholder="Type Japanese (Romaji) here">
@@ -373,6 +429,7 @@
         <!-- Food Items Section -->
         <section id="food" class="card">
             <h2 class="subsection-title">16. Food Items</h2>
+            <p id="food-progress" class="question-progress"></p>
             <div class="flex flex-col items-center">
                 <p id="food-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
                 <input type="text" id="food-answer" class="input-field mb-4" placeholder="Type English here">
@@ -385,6 +442,7 @@
         <!-- Vocabulary Section -->
         <section id="vocabulary" class="card">
             <h2 class="subsection-title">17. Vocabulary</h2>
+            <p id="vocabulary-progress" class="question-progress"></p>
             <div class="flex flex-col items-center">
                 <p id="vocabulary-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
                 <input type="text" id="vocabulary-answer" class="input-field mb-4" placeholder="Type English here">
@@ -415,6 +473,7 @@
                 </ul>
             </div>
             <h3 class="text-xl font-semibold text-gray-700 mb-4">Particle Exercise:</h3>
+            <p id="particle-progress" class="question-progress"></p>
             <div class="flex flex-col items-center">
                 <p id="particle-sentence" class="text-xl text-gray-700 mb-4"></p>
                 <input type="text" id="particle-input" class="input-field mb-4" placeholder="Type the particle (e.g., wa)">
@@ -458,6 +517,7 @@
                 </div>
             </div>
             <h3 class="text-xl font-semibold text-gray-700 mb-4">Hiragana to Romaji Exercise:</h3>
+            <p id="hiragana-progress" class="question-progress"></p>
             <div class="flex flex-col items-center">
                 <p id="hiragana-word" class="text-3xl font-bold text-blue-800 mb-4"></p>
                 <input type="text" id="romaji-input" class="input-field mb-4" placeholder="Type Romaji">
@@ -470,6 +530,10 @@
     </div>
 
     <script>
+        // Global score
+        let score = 0;
+        const scoreDisplay = document.getElementById('current-score');
+
         // Helper function to shuffle an array
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
@@ -480,7 +544,7 @@
         }
 
         // Generic Quiz Logic
-        function setupQuiz(data, questionElId, answerInputId, feedbackElId, checkBtnId, nextBtnId, questionType = 'japanese-to-english') {
+        function setupQuiz(data, questionElId, answerInputId, feedbackElId, checkBtnId, nextBtnId, progressElId, questionType = 'japanese-to-english') {
             let currentIndex = 0;
             let shuffledData = shuffleArray([...data]);
 
@@ -489,6 +553,11 @@
             const feedbackEl = document.getElementById(feedbackElId);
             const checkBtn = document.getElementById(checkBtnId);
             const nextBtn = document.getElementById(nextBtnId);
+            const progressEl = document.getElementById(progressElId);
+
+            function updateProgress() {
+                progressEl.textContent = `Question ${currentIndex + 1} of ${shuffledData.length}`;
+            }
 
             function displayQuestion() {
                 const item = shuffledData[currentIndex];
@@ -516,25 +585,29 @@
                 answerInput.value = '';
                 feedbackEl.textContent = '';
                 feedbackEl.classList.remove('correct', 'incorrect');
+                updateProgress();
             }
 
             checkBtn.addEventListener('click', () => {
                 const item = shuffledData[currentIndex];
                 const userAnswer = answerInput.value.toLowerCase().trim();
                 let correctAnswer;
+                let isCorrect = false;
 
                 if (questionType === 'japanese-to-english') {
                     correctAnswer = item.english.toLowerCase().trim();
+                    isCorrect = (userAnswer === correctAnswer);
                 } else if (questionType === 'english-to-japanese' || questionType === 'number-to-japanese' || questionType === 'hiragana-to-romaji' || questionType === 'date-to-japanese') {
                     correctAnswer = item.japanese.toLowerCase().trim();
+                    isCorrect = (userAnswer === correctAnswer);
                 } else if (questionType === 'fill-in-the-blank') {
                     const userAnswers = userAnswer.split(',').map(s => s.trim());
                     const correctAnswers = item.correct.toLowerCase().split(',').map(s => s.trim());
 
-                    let isCorrect = true;
                     if (userAnswers.length !== correctAnswers.length) {
                         isCorrect = false;
                     } else {
+                        isCorrect = true;
                         for (let i = 0; i < correctAnswers.length; i++) {
                             if ((correctAnswers[i] === 'e' || correctAnswers[i] === 'ni') && (userAnswers[i] === 'e' || userAnswers[i] === 'ni')) {
                                 continue; // Allow 'e' or 'ni' for direction particles
@@ -545,24 +618,16 @@
                             }
                         }
                     }
-                    if (isCorrect) {
-                        feedbackEl.textContent = 'Correct!';
-                        feedbackEl.classList.remove('incorrect');
-                        feedbackEl.classList.add('correct');
-                    } else {
-                        feedbackEl.textContent = `Incorrect. Correct is "${item.correct}".`;
-                        feedbackEl.classList.remove('correct');
-                        feedbackEl.classList.add('incorrect');
-                    }
-                    return; // Skip generic feedback for fill-in-the-blank
                 }
 
-                if (userAnswer === correctAnswer) {
-                    feedbackEl.textContent = 'Correct!';
+                if (isCorrect) {
+                    feedbackEl.innerHTML = '<i class="fas fa-check-circle"></i> Correct!';
                     feedbackEl.classList.remove('incorrect');
                     feedbackEl.classList.add('correct');
+                    score++;
+                    scoreDisplay.textContent = score;
                 } else {
-                    feedbackEl.textContent = `Incorrect. Correct is "${correctAnswer}".`;
+                    feedbackEl.innerHTML = `<i class="fas fa-times-circle"></i> Incorrect. Correct is "${correctAnswer || item.correct}".`;
                     feedbackEl.classList.remove('correct');
                     feedbackEl.classList.add('incorrect');
                 }
@@ -576,18 +641,18 @@
             displayQuestion(); // Initial display
         }
 
-        // Data for sections
+        // Data for sections (unchanged from previous version)
         const greetingsData = [
-            { japanese: 'Konnichiwa', english: 'Hello / Hi' },
-            { japanese: 'Ohayou gozaimasu', english: 'Good Morning' },
-            { japanese: 'Arigatou gozaimasu', english: 'Thank you very much' },
-            { japanese: 'Sumimasen', english: 'Excuse me' },
-            { japanese: 'Ja mata', english: 'See You' },
-            { japanese: 'Oyasumi nasai', english: 'Good Night' },
-            { japanese: 'Douitashi mashite', english: 'You are welcome' },
-            { japanese: 'Gomen-nasai', english: 'Sorry' },
-            { japanese: 'Hajimemashite', english: 'How do you do' },
-            { japanese: 'Konbanwa', english: 'Good Evening' }
+            { japanese: 'Konnichiwa', english: 'hello / hi' },
+            { japanese: 'Ohayou gozaimasu', english: 'good morning' },
+            { japanese: 'Arigatou gozaimasu', english: 'thank you very much' },
+            { japanese: 'Sumimasen', english: 'excuse me' },
+            { japanese: 'Ja mata', english: 'see you' },
+            { japanese: 'Oyasumi nasai', english: 'good night' },
+            { japanese: 'Douitashi mashite', english: 'you are welcome' },
+            { japanese: 'Gomen-nasai', english: 'sorry' },
+            { japanese: 'Hajimemashite', english: 'how do you do' },
+            { japanese: 'Konbanwa', english: 'good evening' }
         ];
 
         const adjectivesData = [
@@ -646,29 +711,29 @@
         ];
 
         const familyData = [
-            { japanese: 'chichi', english: 'Father' },
-            { japanese: 'haha', english: 'Mother' },
-            { japanese: 'ani', english: 'Older Brother' },
-            { japanese: 'ane', english: 'Older Sister' },
-            { japanese: 'otouto', english: 'Younger Brother' },
-            { japanese: 'imouto', english: 'Younger Sister' },
-            { japanese: 'ojii san', english: 'Grandfather' },
-            { japanese: 'obaa san', english: 'Grandmother' },
+            { japanese: 'chichi', english: 'father' },
+            { japanese: 'haha', english: 'mother' },
+            { japanese: 'ani', english: 'older brother' },
+            { japanese: 'ane', english: 'older sister' },
+            { japanese: 'otouto', english: 'younger brother' },
+            { japanese: 'imouto', english: 'younger sister' },
+            { japanese: 'ojii san', english: 'grandfather' },
+            { japanese: 'obaa san', english: 'grandmother' },
             { japanese: 'ojisan', english: 'uncle' },
             { japanese: 'obasan', english: 'aunt' }
         ];
 
         const dailyExpressionsData = [
-            { japanese: 'Tadaima', english: "I'm home" },
-            { japanese: 'Okaerinasai', english: 'Welcome back' },
-            { japanese: 'Itte kimasu', english: "I'm leaving" },
-            { japanese: 'Itte rasshai', english: 'Please go and come back' },
-            { japanese: 'Bikkurishimashita', english: 'I was surprised' },
-            { japanese: 'Wakarimashita', english: 'I understood' },
-            { japanese: 'Wakarimasen', english: "I don't understand" },
-            { japanese: 'Yoku ganbarimashita', english: 'You did well' },
-            { japanese: 'Wasuremashita', english: 'I forgot' },
-            { japanese: 'Waratte kudasai', english: 'Please smile' }
+            { japanese: 'Tadaima', english: "i'm home" },
+            { japanese: 'Okaerinasai', english: 'welcome back' },
+            { japanese: 'Itte kimasu', english: "i'm leaving" },
+            { japanese: 'Itte rasshai', english: 'please go and come back' },
+            { japanese: 'Bikkurishimashita', english: 'i was surprised' },
+            { japanese: 'Wakarimashita', english: 'i understood' },
+            { japanese: 'Wakarimasen', english: "i don't understand" },
+            { japanese: 'Yoku ganbarimashita', english: 'you did well' },
+            { japanese: 'Wasuremashita', english: 'i forgot' },
+            { japanese: 'Waratte kudasai', english: 'please smile' }
         ];
 
         const foodData = [
@@ -687,7 +752,7 @@
             { japanese: 'ame', english: 'candy' },
             { japanese: 'okashi', english: 'sweet' },
             { japanese: 'mochi', english: 'rice cake' },
-            { japanese: 'sake', english: 'Japanese rice wine' },
+            { japanese: 'sake', english: 'japanese rice wine' },
             { japanese: 'biiru', english: 'beer' },
             { japanese: 'niku', english: 'meat' },
             { japanese: 'tori niku', english: 'chicken' }
@@ -711,15 +776,15 @@
             { japanese: 'daigaku', english: 'university' },
             { japanese: 'hon', english: 'book' },
             { japanese: 'tori', english: 'bird' },
-            { japanese: 'indo', english: 'India' },
+            { japanese: 'indo', english: 'india' },
             { japanese: 'gakkou', english: 'school' },
             { japanese: 'neko', english: 'cat' },
             { japanese: 'eki', english: 'station' },
             { japanese: 'miseru', english: 'to show' },
             { japanese: 'kuruma', english: 'car' },
             { japanese: 'sensei', english: 'teacher' },
-            { japanese: 'nihon', english: 'Japan' },
-            { japanese: 'furansu', english: 'France' },
+            { japanese: 'nihon', english: 'japan' },
+            { japanese: 'furansu', english: 'france' },
             { japanese: 'densha', english: 'train' },
             { japanese: 'kaze', english: 'wind' },
             { japanese: 'isu', english: 'chair' },
@@ -760,12 +825,12 @@
 
         // Demonstratives Data
         const demonstrativesExercises = [
-            { sentence: '____ wa kagi desu. (This is key)', correct: 'Kore' },
-            { sentence: '____ wa kaban desu. (It is a bag)', correct: 'Sore' },
-            { sentence: '____ hito wa Miira desu. (This person is Meera)', correct: 'Kono' },
-            { sentence: '____ hito wa Ken desu. (That person is Ken)', correct: 'Ano' },
-            { sentence: '____ nooto wa dare no desu ka? (Whose notebook is that?)', correct: 'Ano' },
-            { sentence: '____ kasa wa Rei san no desu. (This umbrella belongs to Ms. Rei)', correct: 'Kono' }
+            { sentence: '____ wa kagi desu. (This is key)', correct: 'kore' },
+            { sentence: '____ wa kaban desu. (It is a bag)', correct: 'sore' },
+            { sentence: '____ hito wa Miira desu. (This person is Meera)', correct: 'kono' },
+            { sentence: '____ hito wa Ken desu. (That person is Ken)', correct: 'ano' },
+            { sentence: '____ nooto wa dare no desu ka? (Whose notebook is that?)', correct: 'ano' },
+            { sentence: '____ kasa wa Rei san no desu. (This umbrella belongs to Ms. Rei)', correct: 'kono' }
         ];
 
         // Kanji Numbers Data
@@ -782,13 +847,13 @@
 
         // Weekly Days Data (for quiz)
         const weeklyDaysData = [
-            { japanese: '月曜日', english: 'Monday' },
-            { japanese: '火曜日', english: 'Tuesday' },
-            { japanese: '水曜日', english: 'Wednesday' },
-            { japanese: '木曜日', english: 'Thursday' },
-            { japanese: '金曜日', english: 'Friday' },
-            { japanese: '土曜日', english: 'Saturday' },
-            { japanese: '日曜日', english: 'Sunday' }
+            { japanese: '月曜日', english: 'monday' },
+            { japanese: '火曜日', english: 'tuesday' },
+            { japanese: '水曜日', english: 'wednesday' },
+            { japanese: '木曜日', english: 'thursday' },
+            { japanese: '金曜日', english: 'friday' },
+            { japanese: '土曜日', english: 'saturday' },
+            { japanese: '日曜日', english: 'sunday' }
         ];
 
         // Monthly Days Data (for table)
@@ -844,15 +909,15 @@
 
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Setup Quiz sections (replacing old flashcards)
-            setupQuiz(greetingsData, 'greeting-question', 'greeting-answer', 'greeting-feedback', 'check-greeting-btn', 'next-greeting-btn', 'japanese-to-english');
-            setupQuiz(adjectivesData, 'adjective-question', 'adjective-answer', 'adjective-feedback', 'check-adjective-btn', 'next-adjective-btn', 'japanese-to-english');
-            setupQuiz(bodyPartsData, 'bodypart-question', 'bodypart-answer', 'bodypart-feedback', 'check-bodypart-btn', 'next-bodypart-btn', 'japanese-to-english');
-            setupQuiz(colorsData, 'color-question', 'color-answer', 'color-feedback', 'check-color-btn', 'next-color-btn', 'japanese-to-english');
-            setupQuiz(familyData, 'family-question', 'family-answer', 'family-feedback', 'check-family-btn', 'next-family-btn', 'japanese-to-english');
-            setupQuiz(dailyExpressionsData, 'expression-question', 'expression-answer', 'expression-feedback', 'check-expression-btn', 'next-expression-btn', 'japanese-to-english');
-            setupQuiz(foodData, 'food-question', 'food-answer', 'food-feedback', 'check-food-btn', 'next-food-btn', 'japanese-to-english');
-            setupQuiz(vocabularyData, 'vocabulary-question', 'vocabulary-answer', 'vocabulary-feedback', 'check-vocabulary-btn', 'next-vocabulary-btn', 'japanese-to-english');
+            // Setup Quiz sections
+            setupQuiz(greetingsData, 'greeting-question', 'greeting-answer', 'greeting-feedback', 'check-greeting-btn', 'next-greeting-btn', 'greeting-progress', 'japanese-to-english');
+            setupQuiz(adjectivesData, 'adjective-question', 'adjective-answer', 'adjective-feedback', 'check-adjective-btn', 'next-adjective-btn', 'adjective-progress', 'japanese-to-english');
+            setupQuiz(bodyPartsData, 'bodypart-question', 'bodypart-answer', 'bodypart-feedback', 'check-bodypart-btn', 'next-bodypart-btn', 'bodypart-progress', 'japanese-to-english');
+            setupQuiz(colorsData, 'color-question', 'color-answer', 'color-feedback', 'check-color-btn', 'next-color-btn', 'color-progress', 'japanese-to-english');
+            setupQuiz(familyData, 'family-question', 'family-answer', 'family-feedback', 'check-family-btn', 'next-family-btn', 'family-progress', 'japanese-to-english');
+            setupQuiz(dailyExpressionsData, 'expression-question', 'expression-answer', 'expression-feedback', 'check-expression-btn', 'next-expression-btn', 'expression-progress', 'japanese-to-english');
+            setupQuiz(foodData, 'food-question', 'food-answer', 'food-feedback', 'check-food-btn', 'next-food-btn', 'food-progress', 'japanese-to-english');
+            setupQuiz(vocabularyData, 'vocabulary-question', 'vocabulary-answer', 'vocabulary-feedback', 'check-vocabulary-btn', 'next-vocabulary-btn', 'vocabulary-progress', 'japanese-to-english');
 
             // --- Verb Conjugation Logic ---
             let currentVerbIndex = 0;
@@ -866,6 +931,8 @@
             const checkConjugationBtn = document.getElementById('check-conjugation-btn');
             const nextConjugationBtn = document.getElementById('next-conjugation-btn');
             const verbListEl = document.getElementById('verb-list');
+            const conjugationProgressEl = document.getElementById('conjugation-progress');
+
 
             // Populate verb list
             verbsData.forEach(verb => {
@@ -874,6 +941,9 @@
                 verbListEl.appendChild(li);
             });
 
+            function updateConjugationProgress() {
+                conjugationProgressEl.textContent = `Question ${currentVerbIndex + 1} of ${shuffledVerbs.length}`;
+            }
 
             function displayConjugationExercise() {
                 const verb = shuffledVerbs[currentVerbIndex];
@@ -884,6 +954,7 @@
                 verbMasenDeshitaInput.value = '';
                 conjugationFeedbackEl.textContent = '';
                 conjugationFeedbackEl.classList.remove('correct', 'incorrect');
+                updateConjugationProgress();
             }
 
             checkConjugationBtn.addEventListener('click', () => {
@@ -909,11 +980,13 @@
                 }
 
                 if (allCorrect) {
-                    conjugationFeedbackEl.textContent = 'All correct!';
+                    conjugationFeedbackEl.innerHTML = '<i class="fas fa-check-circle"></i> All correct!';
                     conjugationFeedbackEl.classList.remove('incorrect');
                     conjugationFeedbackEl.classList.add('correct');
+                    score++;
+                    scoreDisplay.textContent = score;
                 } else {
-                    conjugationFeedbackEl.textContent = feedbackText || 'Some answers are incorrect.';
+                    conjugationFeedbackEl.innerHTML = `<i class="fas fa-times-circle"></i> Some answers are incorrect.\n${feedbackText}`;
                     conjugationFeedbackEl.classList.remove('correct');
                     conjugationFeedbackEl.classList.add('incorrect');
                 }
@@ -934,6 +1007,11 @@
             const existenceFeedbackEl = document.getElementById('existence-feedback');
             const checkExistenceBtn = document.getElementById('check-existence-btn');
             const nextExistenceBtn = document.getElementById('next-existence-btn');
+            const existenceProgressEl = document.getElementById('existence-progress');
+
+            function updateExistenceProgress() {
+                existenceProgressEl.textContent = `Question ${currentExistenceIndex + 1} of ${shuffledExistence.length}`;
+            }
 
             function displayExistenceExercise() {
                 const exercise = shuffledExistence[currentExistenceIndex];
@@ -941,16 +1019,19 @@
                 existenceAnswerEl.value = '';
                 existenceFeedbackEl.textContent = '';
                 existenceFeedbackEl.classList.remove('correct', 'incorrect');
+                updateExistenceProgress();
             }
 
             checkExistenceBtn.addEventListener('click', () => {
                 const exercise = shuffledExistence[currentExistenceIndex];
                 if (existenceAnswerEl.value.toLowerCase().trim() === exercise.correct.toLowerCase()) {
-                    existenceFeedbackEl.textContent = 'Correct!';
+                    existenceFeedbackEl.innerHTML = '<i class="fas fa-check-circle"></i> Correct!';
                     existenceFeedbackEl.classList.remove('incorrect');
                     existenceFeedbackEl.classList.add('correct');
+                    score++;
+                    scoreDisplay.textContent = score;
                 } else {
-                    existenceFeedbackEl.textContent = `Incorrect. Correct is "${exercise.correct}".`;
+                    existenceFeedbackEl.innerHTML = `<i class="fas fa-times-circle"></i> Incorrect. Correct is "${exercise.correct}".`;
                     existenceFeedbackEl.classList.remove('correct');
                     existenceFeedbackEl.classList.add('incorrect');
                 }
@@ -964,14 +1045,14 @@
             displayExistenceExercise(); // Initial display
 
             // --- Demonstratives Logic ---
-            setupQuiz(demonstrativesExercises, 'demonstrative-sentence', 'demonstrative-input', 'demonstrative-feedback', 'check-demonstrative-btn', 'next-demonstrative-btn', 'japanese-to-english');
+            setupQuiz(demonstrativesExercises, 'demonstrative-sentence', 'demonstrative-input', 'demonstrative-feedback', 'check-demonstrative-btn', 'next-demonstrative-btn', 'demonstrative-progress', 'japanese-to-english');
 
 
             // --- Kanji Numbers Logic ---
-            setupQuiz(kanjiNumbersExercises, 'number-to-convert', 'kanji-number-input', 'kanji-number-feedback', 'check-kanji-number-btn', 'next-kanji-number-btn', 'number-to-japanese');
+            setupQuiz(kanjiNumbersExercises, 'number-to-convert', 'kanji-number-input', 'kanji-number-feedback', 'check-kanji-number-btn', 'next-kanji-number-btn', 'kanji-number-progress', 'number-to-japanese');
 
             // --- Weekly Days Quiz ---
-            setupQuiz(weeklyDaysData, 'weekly-day-question', 'weekly-day-answer', 'weekly-day-feedback', 'check-weekly-day-btn', 'next-weekly-day-btn', 'japanese-to-english');
+            setupQuiz(weeklyDaysData, 'weekly-day-question', 'weekly-day-answer', 'weekly-day-feedback', 'check-weekly-day-btn', 'next-weekly-day-btn', 'weekly-day-progress', 'japanese-to-english');
 
             // --- Monthly Days Table Population ---
             const monthlyDaysTableBody = document.getElementById('monthly-days-table-body');
@@ -986,14 +1067,14 @@
             });
 
             // --- Date Conversion Quiz ---
-            setupQuiz(dateConversionExercises, 'date-conversion-question', 'date-conversion-answer', 'date-conversion-feedback', 'check-date-conversion-btn', 'next-date-conversion-btn', 'date-to-japanese');
+            setupQuiz(dateConversionExercises, 'date-conversion-question', 'date-conversion-answer', 'date-conversion-feedback', 'check-date-conversion-btn', 'next-date-conversion-btn', 'date-conversion-progress', 'date-to-japanese');
 
 
             // --- Particles Logic ---
-            setupQuiz(particleExercises, 'particle-sentence', 'particle-input', 'particle-feedback', 'check-particle-btn', 'next-particle-btn', 'fill-in-the-blank');
+            setupQuiz(particleExercises, 'particle-sentence', 'particle-input', 'particle-feedback', 'check-particle-btn', 'next-particle-btn', 'particle-progress', 'fill-in-the-blank');
 
             // --- Hiragana to Romaji Logic ---
-            setupQuiz(hiraganaRomajiExercises, 'hiragana-word', 'romaji-input', 'romaji-feedback', 'check-romaji-btn', 'next-romaji-btn', 'hiragana-to-romaji');
+            setupQuiz(hiraganaRomajiExercises, 'hiragana-word', 'romaji-input', 'romaji-feedback', 'check-romaji-btn', 'next-romaji-btn', 'hiragana-progress', 'hiragana-to-romaji');
         });
     </script>
 </body>
