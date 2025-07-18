@@ -57,27 +57,22 @@
             transition: background-color 0.3s ease-in-out, transform 0.15s ease-in-out, box-shadow 0.2s ease-in-out;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Stronger button shadow */
             margin-top: 10px;
-            background-image: linear-gradient(to right, var(--tw-gradient-stops));
         }
         .btn-primary {
-            --tw-gradient-from: #3b82f6;
-            --tw-gradient-to: #2563eb;
+            background-image: linear-gradient(to right, #3b82f6, #2563eb); /* Directly apply gradient */
             color: #ffffff;
         }
         .btn-primary:hover {
-            --tw-gradient-from: #2563eb;
-            --tw-gradient-to: #1d4ed8;
+            background-image: linear-gradient(to right, #2563eb, #1d4ed8); /* Adjust hover gradient */
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
         .btn-secondary {
-            --tw-gradient-from: #60a5fa;
-            --tw-gradient-to: #3b82f6;
+            background-image: linear-gradient(to right, #60a5fa, #3b82f6); /* Directly apply gradient */
             color: #ffffff;
         }
         .btn-secondary:hover {
-            --tw-gradient-from: #3b82f6;
-            --tw-gradient-to: #2563eb;
+            background-image: linear-gradient(to right, #3b82f6, #2563eb); /* Adjust hover gradient */
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
@@ -141,6 +136,53 @@
             margin-bottom: 1rem;
             text-align: center;
         }
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+        .tab-button {
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            background-color: #e2e8f0; /* Light gray */
+            color: #475569; /* Darker gray */
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        }
+        .tab-button.active {
+            background-color: #3b82f6; /* Blue */
+            color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .tab-button:hover:not(.active) {
+            background-color: #cbd5e1; /* Medium gray */
+        }
+        .learn-content p, .learn-content ul, .learn-content table {
+            margin-bottom: 1em;
+        }
+        .learn-content strong {
+            color: #1e3a8a;
+        }
+        .learn-content ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .learn-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .learn-content th, .learn-content td {
+            border: 1px solid #e2e8f0;
+            padding: 8px;
+            text-align: left;
+        }
+        .learn-content th {
+            background-color: #f8fafc;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body class="p-4">
@@ -174,356 +216,379 @@
         <!-- Greetings Section -->
         <section id="greetings" class="card">
             <h2 class="subsection-title">1. Japanese Greetings</h2>
-            <p id="greeting-progress" class="question-progress"></p>
-            <div class="flex flex-col items-center">
-                <p id="greeting-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
-                <input type="text" id="greeting-answer" class="input-field mb-4" placeholder="Type English here">
-                <button id="check-greeting-btn" class="btn btn-primary">Check Answer</button>
-                <div id="greeting-feedback" class="feedback mt-4 w-full max-w-lg"></div>
-                <button id="next-greeting-btn" class="btn btn-secondary mt-4">Next Greeting</button>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-target="greetings-learn">Learn</button>
+                <button class="tab-button" data-target="greetings-practice">Practice</button>
+            </div>
+            <div id="greetings-learn" class="learn-content"></div>
+            <div id="greetings-practice" class="practice-content hidden">
+                <p id="greeting-progress" class="question-progress"></p>
+                <div class="flex flex-col items-center">
+                    <p id="greeting-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                    <input type="text" id="greeting-answer" class="input-field mb-4" placeholder="Type English here">
+                    <button id="check-greeting-btn" class="btn btn-primary">Check Answer</button>
+                    <div id="greeting-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                    <button id="next-greeting-btn" class="btn btn-secondary mt-4">Next Greeting</button>
+                </div>
             </div>
         </section>
 
         <!-- Adjectives Section -->
         <section id="adjectives" class="card">
             <h2 class="subsection-title">2. na & 3. i Adjectives</h2>
-            <p id="adjective-progress" class="question-progress"></p>
-            <div class="flex flex-col items-center">
-                <p id="adjective-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
-                <input type="text" id="adjective-answer" class="input-field mb-4" placeholder="Type English here">
-                <button id="check-adjective-btn" class="btn btn-primary">Check Answer</button>
-                <div id="adjective-feedback" class="feedback mt-4 w-full max-w-lg"></div>
-                <button id="next-adjective-btn" class="btn btn-secondary mt-4">Next Adjective</button>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-target="adjectives-learn">Learn</button>
+                <button class="tab-button" data-target="adjectives-practice">Practice</button>
+            </div>
+            <div id="adjectives-learn" class="learn-content"></div>
+            <div id="adjectives-practice" class="practice-content hidden">
+                <p id="adjective-progress" class="question-progress"></p>
+                <div class="flex flex-col items-center">
+                    <p id="adjective-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                    <input type="text" id="adjective-answer" class="input-field mb-4" placeholder="Type English here">
+                    <button id="check-adjective-btn" class="btn btn-primary">Check Answer</button>
+                    <div id="adjective-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                    <button id="next-adjective-btn" class="btn btn-secondary mt-4">Next Adjective</button>
+                </div>
             </div>
         </section>
 
         <!-- Body Parts Section -->
         <section id="body-parts" class="card">
             <h2 class="subsection-title">4. Body Parts</h2>
-            <p id="bodypart-progress" class="question-progress"></p>
-            <div class="flex flex-col items-center">
-                <p id="bodypart-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
-                <input type="text" id="bodypart-answer" class="input-field mb-4" placeholder="Type English here">
-                <button id="check-bodypart-btn" class="btn btn-primary">Check Answer</button>
-                <div id="bodypart-feedback" class="feedback mt-4 w-full max-w-lg"></div>
-                <button id="next-bodypart-btn" class="btn btn-secondary mt-4">Next Body Part</button>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-target="body-parts-learn">Learn</button>
+                <button class="tab-button" data-target="body-parts-practice">Practice</button>
+            </div>
+            <div id="body-parts-learn" class="learn-content"></div>
+            <div id="body-parts-practice" class="practice-content hidden">
+                <p id="bodypart-progress" class="question-progress"></p>
+                <div class="flex flex-col items-center">
+                    <p id="bodypart-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                    <input type="text" id="bodypart-answer" class="input-field mb-4" placeholder="Type English here">
+                    <button id="check-bodypart-btn" class="btn btn-primary">Check Answer</button>
+                    <div id="bodypart-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                    <button id="next-bodypart-btn" class="btn btn-secondary mt-4">Next Body Part</button>
+                </div>
             </div>
         </section>
 
         <!-- Verbs & Conjugation Section -->
         <section id="verbs" class="card">
             <h2 class="subsection-title">5. Japanese Verbs & 6. Conjugation</h2>
-            <div class="mb-6">
-                <h3 class="text-xl font-semibold text-gray-700 mb-2">Verb List:</h3>
-                <ul id="verb-list" class="list-disc list-inside grid grid-cols-2 sm:grid-cols-3 gap-2"></ul>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-target="verbs-learn">Learn</button>
+                <button class="tab-button" data-target="verbs-practice">Practice</button>
             </div>
-
-            <h3 class="text-xl font-semibold text-gray-700 mb-4">Conjugation Exercise:</h3>
-            <p id="conjugation-progress" class="question-progress"></p>
-            <div class="flex flex-col items-center">
-                <p id="conjugation-verb-casual" class="text-2xl font-bold text-blue-800 mb-4">Verb: <span id="current-casual-verb"></span></p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-lg">
-                    <div>
-                        <label class="block text-gray-700 text-sm font-bold mb-1">Present (masu):</label>
-                        <input type="text" id="verb-masu" class="input-field" placeholder="e.g., tabemasu">
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 text-sm font-bold mb-1">Present Negative (masen):</label>
-                        <input type="text" id="verb-masen" class="input-field" placeholder="e.g., tabemasen">
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 text-sm font-bold mb-1">Past (mashita):</label>
-                        <input type="text" id="verb-mashita" class="input-field" placeholder="e.g., tabemashita">
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 text-sm font-bold mb-1">Past Negative (masen deshita):</label>
-                        <input type="text" id="verb-masen-deshita" class="input-field" placeholder="e.g., tabemasendeshita">
-                    </div>
+            <div id="verbs-learn" class="learn-content"></div>
+            <div id="verbs-practice" class="practice-content hidden">
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Verb List:</h3>
+                    <ul id="verb-list" class="list-disc list-inside grid grid-cols-2 sm:grid-cols-3 gap-2"></ul>
                 </div>
-                <button id="check-conjugation-btn" class="btn btn-primary mt-6">Check Answers</button>
-                <div id="conjugation-feedback" class="feedback mt-4 w-full max-w-lg"></div>
-                <button id="next-conjugation-btn" class="btn btn-secondary mt-4">Next Verb</button>
+
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">Conjugation Exercise:</h3>
+                <p id="conjugation-progress" class="question-progress"></p>
+                <div class="flex flex-col items-center">
+                    <p id="conjugation-verb-casual" class="text-2xl font-bold text-blue-800 mb-4">Verb: <span id="current-casual-verb"></span></p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-lg">
+                        <div>
+                            <label class="block text-gray-700 text-sm font-bold mb-1">Present (masu):</label>
+                            <input type="text" id="verb-masu" class="input-field" placeholder="e.g., tabemasu">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-sm font-bold mb-1">Present Negative (masen):</label>
+                            <input type="text" id="verb-masen" class="input-field" placeholder="e.g., tabemasen">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-sm font-bold mb-1">Past (mashita):</label>
+                            <input type="text" id="verb-mashita" class="input-field" placeholder="e.g., tabemashita">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-sm font-bold mb-1">Past Negative (masen deshita):</label>
+                            <input type="text" id="verb-masen-deshita" class="input-field" placeholder="e.g., tabemasendeshita">
+                        </div>
+                    </div>
+                    <button id="check-conjugation-btn" class="btn btn-primary mt-6">Check Answers</button>
+                    <div id="conjugation-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                    <button id="next-conjugation-btn" class="btn btn-secondary mt-4">Next Verb</button>
+                </div>
             </div>
         </section>
 
         <!-- Existence Section -->
         <section id="existence" class="card">
             <h2 class="subsection-title">7. Existence (aru/iru)</h2>
-            <p id="existence-progress" class="question-progress"></p>
-            <div class="flex flex-col items-center">
-                <p id="existence-sentence" class="text-xl text-gray-700 mb-4"></p>
-                <select id="existence-answer" class="input-field mb-4">
-                    <option value="">Select an option</option>
-                    <option value="arimasu">arimasu</option>
-                    <option value="arimasen">arimasen</option>
-                    <option value="arimashita">arimashita</option>
-                    <option value="arimasen deshita">arimasen deshita</option>
-                    <option value="imasu">imasu</option>
-                    <option value="imasen">imasen</option>
-                    <option value="imashita">imashita</option>
-                    <option value="imasen deshita">imasen deshita</option>
-                </select>
-                <button id="check-existence-btn" class="btn btn-primary">Check Answer</button>
-                <div id="existence-feedback" class="feedback mt-4 w-full max-w-lg"></div>
-                <button id="next-existence-btn" class="btn btn-secondary mt-4">Next Exercise</button>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-target="existence-learn">Learn</button>
+                <button class="tab-button" data-target="existence-practice">Practice</button>
+            </div>
+            <div id="existence-learn" class="learn-content"></div>
+            <div id="existence-practice" class="practice-content hidden">
+                <p id="existence-progress" class="question-progress"></p>
+                <div class="flex flex-col items-center">
+                    <p id="existence-sentence" class="text-xl text-gray-700 mb-4"></p>
+                    <select id="existence-answer" class="input-field mb-4">
+                        <option value="">Select an option</option>
+                        <option value="arimasu">arimasu</option>
+                        <option value="arimasen">arimasen</option>
+                        <option value="arimashita">arimashita</option>
+                        <option value="arimasen deshita">arimasen deshita</option>
+                        <option value="imasu">imasu</option>
+                        <option value="imasen">imasen</option>
+                        <option value="imashita">imashita</option>
+                        <option value="imasen deshita">imasen deshita</option>
+                    </select>
+                    <button id="check-existence-btn" class="btn btn-primary">Check Answer</button>
+                    <div id="existence-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                    <button id="next-existence-btn" class="btn btn-secondary mt-4">Next Exercise</button>
+                </div>
             </div>
         </section>
 
         <!-- Colors Section -->
         <section id="colors" class="card">
             <h2 class="subsection-title">8. Colors in Japanese</h2>
-            <p id="color-progress" class="question-progress"></p>
-            <div class="flex flex-col items-center">
-                <p id="color-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
-                <input type="text" id="color-answer" class="input-field mb-4" placeholder="Type English here">
-                <button id="check-color-btn" class="btn btn-primary">Check Answer</button>
-                <div id="color-feedback" class="feedback mt-4 w-full max-w-lg"></div>
-                <button id="next-color-btn" class="btn btn-secondary mt-4">Next Color</button>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-target="colors-learn">Learn</button>
+                <button class="tab-button" data-target="colors-practice">Practice</button>
+            </div>
+            <div id="colors-learn" class="learn-content"></div>
+            <div id="colors-practice" class="practice-content hidden">
+                <p id="color-progress" class="question-progress"></p>
+                <div class="flex flex-col items-center">
+                    <p id="color-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                    <input type="text" id="color-answer" class="input-field mb-4" placeholder="Type English here">
+                    <button id="check-color-btn" class="btn btn-primary">Check Answer</button>
+                    <div id="color-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                    <button id="next-color-btn" class="btn btn-secondary mt-4">Next Color</button>
+                </div>
             </div>
         </section>
 
         <!-- Family Members Section -->
         <section id="family" class="card">
             <h2 class="subsection-title">9. Family Members</h2>
-            <p id="family-progress" class="question-progress"></p>
-            <div class="flex flex-col items-center">
-                <p id="family-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
-                <input type="text" id="family-answer" class="input-field mb-4" placeholder="Type English here">
-                <button id="check-family-btn" class="btn btn-primary">Check Answer</button>
-                <div id="family-feedback" class="feedback mt-4 w-full max-w-lg"></div>
-                <button id="next-family-btn" class="btn btn-secondary mt-4">Next Member</button>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-target="family-learn">Learn</button>
+                <button class="tab-button" data-target="family-practice">Practice</button>
+            </div>
+            <div id="family-learn" class="learn-content"></div>
+            <div id="family-practice" class="practice-content hidden">
+                <p id="family-progress" class="question-progress"></p>
+                <div class="flex flex-col items-center">
+                    <p id="family-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                    <input type="text" id="family-answer" class="input-field mb-4" placeholder="Type English here">
+                    <button id="check-family-btn" class="btn btn-primary">Check Answer</button>
+                    <div id="family-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                    <button id="next-family-btn" class="btn btn-secondary mt-4">Next Member</button>
+                </div>
             </div>
         </section>
 
         <!-- Daily Expressions Section -->
         <section id="daily-expressions" class="card">
             <h2 class="subsection-title">10. Daily Expressions</h2>
-            <p id="expression-progress" class="question-progress"></p>
-            <div class="flex flex-col items-center">
-                <p id="expression-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
-                <input type="text" id="expression-answer" class="input-field mb-4" placeholder="Type English here">
-                <button id="check-expression-btn" class="btn btn-primary">Check Answer</button>
-                <div id="expression-feedback" class="feedback mt-4 w-full max-w-lg"></div>
-                <button id="next-expression-btn" class="btn btn-secondary mt-4">Next Expression</button>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-target="daily-expressions-learn">Learn</button>
+                <button class="tab-button" data-target="daily-expressions-practice">Practice</button>
+            </div>
+            <div id="daily-expressions-learn" class="learn-content"></div>
+            <div id="daily-expressions-practice" class="practice-content hidden">
+                <p id="expression-progress" class="question-progress"></p>
+                <div class="flex flex-col items-center">
+                    <p id="expression-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                    <input type="text" id="expression-answer" class="input-field mb-4" placeholder="Type English here">
+                    <button id="check-expression-btn" class="btn btn-primary">Check Answer</button>
+                    <div id="expression-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                    <button id="next-expression-btn" class="btn btn-secondary mt-4">Next Expression</button>
+                </div>
             </div>
         </section>
 
         <!-- Demonstratives Section -->
         <section id="demonstratives" class="card">
             <h2 class="subsection-title">11. Sore, Kore, Sono, kono, ano</h2>
-            <p id="demonstrative-progress" class="question-progress"></p>
-            <div class="flex flex-col items-center">
-                <p id="demonstrative-sentence" class="text-xl text-gray-700 mb-4"></p>
-                <input type="text" id="demonstrative-input" class="input-field mb-4" placeholder="Type the demonstrative (e.g., Kore)">
-                <button id="check-demonstrative-btn" class="btn btn-primary">Check Answer</button>
-                <div id="demonstrative-feedback" class="feedback mt-4 w-full max-w-lg"></div>
-                <button id="next-demonstrative-btn" class="btn btn-secondary mt-4">Next Exercise</button>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-target="demonstratives-learn">Learn</button>
+                <button class="tab-button" data-target="demonstratives-practice">Practice</button>
+            </div>
+            <div id="demonstratives-learn" class="learn-content"></div>
+            <div id="demonstratives-practice" class="practice-content hidden">
+                <p id="demonstrative-progress" class="question-progress"></p>
+                <div class="flex flex-col items-center">
+                    <p id="demonstrative-sentence" class="text-xl text-gray-700 mb-4"></p>
+                    <input type="text" id="demonstrative-input" class="input-field mb-4" placeholder="Type the demonstrative (e.g., Kore)">
+                    <button id="check-demonstrative-btn" class="btn btn-primary">Check Answer</button>
+                    <div id="demonstrative-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                    <button id="next-demonstrative-btn" class="btn btn-secondary mt-4">Next Exercise</button>
+                </div>
             </div>
         </section>
 
         <!-- Self-Introduction Section -->
         <section id="self-introduction" class="card">
             <h2 class="subsection-title">12. Introduce yourself in Japanese</h2>
-            <div class="text-lg text-gray-700 leading-relaxed mb-4">
-                <p><strong>Hajimemashite</strong> (How do you do)</p>
-                <p><strong>Watashi no namae wa [Your Name] desu.</strong> (My name is [Your Name])</p>
-                <p><strong>Mangaruuru kara kimashita.</strong> (I am from Mangalore)</p>
-                <p><strong>Nitte daigaku no kougaku-bu no gakusei desu.</strong> (I am a student of the engineering dept. of Nitte University)</p>
-                <p><strong>Senkou wa [Your Major] desu</strong> (Major is [Your Major])</p>
-                <p><strong>Watashi no kazoku wa roku-nin de ryoushin to sofu to sobo to ane to watashi desu.</strong> (We are 6 members in family. And my parents, grandfather, grandmother, elder sister and me)</p>
-                <p><strong>Ni juu issai desu.</strong> (I am 21 yr old)</p>
-                <p><strong>Ima nihongo o benkyou shite imasu.</strong> (Now I am studying Japanese)</p>
-                <p><strong>Douzo yoroshiku onegai shimasu.</strong> (Nice to meet you)</p>
-                <p class="mt-4 text-sm text-gray-500">
-                    *Replace [Your Name] and [Your Major] with your actual information.*
-                </p>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-target="self-introduction-learn">Learn</button>
+                <button class="tab-button" data-target="self-introduction-practice">Practice</button>
             </div>
-            <h3 class="text-xl font-semibold text-gray-700 mb-4">Practice Your Self-Introduction:</h3>
-            <textarea id="self-intro-practice" class="input-field w-full max-w-none h-32" placeholder="Type your self-introduction here..."></textarea>
+            <div id="self-introduction-learn" class="learn-content"></div>
+            <div id="self-introduction-practice" class="practice-content hidden">
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">Practice Your Self-Introduction:</h3>
+                <textarea id="self-intro-practice" class="input-field w-full max-w-none h-32" placeholder="Type your self-introduction here..."></textarea>
+            </div>
         </section>
 
         <!-- Kanji Numbers Section -->
         <section id="kanji-numbers" class="card">
             <h2 class="subsection-title">13. Kanji from 1 to 10000</h2>
-            <div class="mb-6">
-                <h3 class="text-xl font-semibold text-gray-700 mb-2">Basic Kanji Numbers:</h3>
-                <ul class="list-disc list-inside grid grid-cols-2 sm:grid-cols-3 gap-2">
-                    <li>一 (ichi) - 1</li>
-                    <li>二 (ni) - 2</li>
-                    <li>Ξ (san) - 3</li>
-                    <li>四 (yon / shi) - 4</li>
-                    <li>$\hbar$ (go) - 5</li>
-                    <li>六 (roku) - 6</li>
-                    <li>七 (nana / shichi) - 7</li>
-                    <li>$\pi$ (hachi) - 8</li>
-                    <li>$\pm$ (kyuu / ku) - 9</li>
-                    <li>$+$ (juu) - 10</li>
-                    <li>百 (Hyaku) - 100</li>
-                    <li>千 (Sen) - 1000</li>
-                    <li>万 (man) - 10000</li>
-                </ul>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-target="kanji-numbers-learn">Learn</button>
+                <button class="tab-button" data-target="kanji-numbers-practice">Practice</button>
             </div>
-            <h3 class="text-xl font-semibold text-gray-700 mb-4">Number Conversion Exercise:</h3>
-            <p id="kanji-number-progress" class="question-progress"></p>
-            <div class="flex flex-col items-center">
-                <p id="number-to-convert" class="text-3xl font-bold text-blue-800 mb-4"></p>
-                <input type="text" id="kanji-number-input" class="input-field mb-4" placeholder="Type in Japanese Romaji">
-                <button id="check-kanji-number-btn" class="btn btn-primary">Check Answer</button>
-                <div id="kanji-number-feedback" class="feedback mt-4 w-full max-w-lg"></div>
-                <button id="next-kanji-number-btn" class="btn btn-secondary mt-4">Next Number</button>
+            <div id="kanji-numbers-learn" class="learn-content"></div>
+            <div id="kanji-numbers-practice" class="practice-content hidden">
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Basic Kanji Numbers:</h3>
+                    <ul class="list-disc list-inside grid grid-cols-2 sm:grid-cols-3 gap-2">
+                        <li>一 (ichi) - 1</li>
+                        <li>二 (ni) - 2</li>
+                        <li>Ξ (san) - 3</li>
+                        <li>四 (yon / shi) - 4</li>
+                        <li>$\hbar$ (go) - 5</li>
+                        <li>六 (roku) - 6</li>
+                        <li>七 (nana / shichi) - 7</li>
+                        <li>$\pi$ (hachi) - 8</li>
+                        <li>$\pm$ (kyuu / ku) - 9</li>
+                        <li>$+$ (juu) - 10</li>
+                        <li>百 (Hyaku) - 100</li>
+                        <li>千 (Sen) - 1000</li>
+                        <li>万 (man) - 10000</li>
+                    </ul>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">Number Conversion Exercise:</h3>
+                <p id="kanji-number-progress" class="question-progress"></p>
+                <div class="flex flex-col items-center">
+                    <p id="number-to-convert" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                    <input type="text" id="kanji-number-input" class="input-field mb-4" placeholder="Type in Japanese Romaji">
+                    <button id="check-kanji-number-btn" class="btn btn-primary">Check Answer</button>
+                    <div id="kanji-number-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                    <button id="next-kanji-number-btn" class="btn btn-secondary mt-4">Next Number</button>
+                </div>
             </div>
         </section>
 
         <!-- Days Section -->
         <section id="days" class="card">
             <h2 class="subsection-title">14. Weekly Days & 15. Monthly Days</h2>
-            <div class="mb-6">
-                <h3 class="text-xl font-semibold text-gray-700 mb-2">Weekly Days:</h3>
-                <ul class="list-disc list-inside grid grid-cols-2 sm:grid-cols-3 gap-2">
-                    <li>月曜日 (getsuyoubi) - Monday</li>
-                    <li>火曜日 (kayoubi) - Tuesday</li>
-                    <li>水曜日 (suiyoubi) - Wednesday</li>
-                    <li>木曜日 (mokuyoubi) - Thursday</li>
-                    <li>金曜日 (kinyoubi) - Friday</li>
-                    <li>土曜日 (doyoubi) - Saturday</li>
-                    <li>日曜日 (nichiyoubi) - Sunday</li>
-                </ul>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-target="days-learn">Learn</button>
+                <button class="tab-button" data-target="days-practice">Practice</button>
             </div>
-            <h3 class="text-xl font-semibold text-gray-700 mb-4">Weekly Day Exercise:</h3>
-            <p id="weekly-day-progress" class="question-progress"></p>
-            <div class="flex flex-col items-center mb-6">
-                <p id="weekly-day-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
-                <input type="text" id="weekly-day-answer" class="input-field mb-4" placeholder="Type English here">
-                <button id="check-weekly-day-btn" class="btn btn-primary">Check Answer</button>
-                <div id="weekly-day-feedback" class="feedback mt-4 w-full max-w-lg"></div>
-                <button id="next-weekly-day-btn" class="btn btn-secondary mt-4">Next Day</button>
-            </div>
-
-            <div>
-                <h3 class="text-xl font-semibold text-gray-700 mb-2">Monthly Days:</h3>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full bg-white border border-gray-200 rounded-lg">
-                        <thead>
-                            <tr class="bg-blue-50">
-                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Date</th>
-                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Romaji</th>
-                            </tr>
-                        </thead>
-                        <tbody id="monthly-days-table-body">
-                            <!-- Monthly days will be inserted here by JS -->
-                        </tbody>
-                    </table>
+            <div id="days-learn" class="learn-content"></div>
+            <div id="days-practice" class="practice-content hidden">
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">Weekly Day Exercise:</h3>
+                <p id="weekly-day-progress" class="question-progress"></p>
+                <div class="flex flex-col items-center mb-6">
+                    <p id="weekly-day-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                    <input type="text" id="weekly-day-answer" class="input-field mb-4" placeholder="Type English here">
+                    <button id="check-weekly-day-btn" class="btn btn-primary">Check Answer</button>
+                    <div id="weekly-day-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                    <button id="next-weekly-day-btn" class="btn btn-secondary mt-4">Next Day</button>
                 </div>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-700 mt-6 mb-4">Date Conversion Exercise:</h3>
-            <p id="date-conversion-progress" class="question-progress"></p>
-            <div class="flex flex-col items-center">
-                <p id="date-conversion-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
-                <input type="text" id="date-conversion-answer" class="input-field mb-4" placeholder="Type Japanese (Romaji) here">
-                <button id="check-date-conversion-btn" class="btn btn-primary">Check Answer</button>
-                <div id="date-conversion-feedback" class="feedback mt-4 w-full max-w-lg"></div>
-                <button id="next-date-conversion-btn" class="btn btn-secondary mt-4">Next Date</button>
+
+                <h3 class="text-xl font-semibold text-gray-700 mt-6 mb-4">Date Conversion Exercise:</h3>
+                <p id="date-conversion-progress" class="question-progress"></p>
+                <div class="flex flex-col items-center">
+                    <p id="date-conversion-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                    <input type="text" id="date-conversion-answer" class="input-field mb-4" placeholder="Type Japanese (Romaji) here">
+                    <button id="check-date-conversion-btn" class="btn btn-primary">Check Answer</button>
+                    <div id="date-conversion-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                    <button id="next-date-conversion-btn" class="btn btn-secondary mt-4">Next Date</button>
+                </div>
             </div>
         </section>
 
         <!-- Food Items Section -->
         <section id="food" class="card">
             <h2 class="subsection-title">16. Food Items</h2>
-            <p id="food-progress" class="question-progress"></p>
-            <div class="flex flex-col items-center">
-                <p id="food-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
-                <input type="text" id="food-answer" class="input-field mb-4" placeholder="Type English here">
-                <button id="check-food-btn" class="btn btn-primary">Check Answer</button>
-                <div id="food-feedback" class="feedback mt-4 w-full max-w-lg"></div>
-                <button id="next-food-btn" class="btn btn-secondary mt-4">Next Food Item</button>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-target="food-learn">Learn</button>
+                <button class="tab-button" data-target="food-practice">Practice</button>
+            </div>
+            <div id="food-learn" class="learn-content"></div>
+            <div id="food-practice" class="practice-content hidden">
+                <p id="food-progress" class="question-progress"></p>
+                <div class="flex flex-col items-center">
+                    <p id="food-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                    <input type="text" id="food-answer" class="input-field mb-4" placeholder="Type English here">
+                    <button id="check-food-btn" class="btn btn-primary">Check Answer</button>
+                    <div id="food-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                    <button id="next-food-btn" class="btn btn-secondary mt-4">Next Food Item</button>
+                </div>
             </div>
         </section>
 
         <!-- Vocabulary Section -->
         <section id="vocabulary" class="card">
             <h2 class="subsection-title">17. Vocabulary</h2>
-            <p id="vocabulary-progress" class="question-progress"></p>
-            <div class="flex flex-col items-center">
-                <p id="vocabulary-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
-                <input type="text" id="vocabulary-answer" class="input-field mb-4" placeholder="Type English here">
-                <button id="check-vocabulary-btn" class="btn btn-primary">Check Answer</button>
-                <div id="vocabulary-feedback" class="feedback mt-4 w-full max-w-lg"></div>
-                <button id="next-vocabulary-btn" class="btn btn-secondary mt-4">Next Word</button>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-target="vocabulary-learn">Learn</button>
+                <button class="tab-button" data-target="vocabulary-practice">Practice</button>
+            </div>
+            <div id="vocabulary-learn" class="learn-content"></div>
+            <div id="vocabulary-practice" class="practice-content hidden">
+                <p id="vocabulary-progress" class="question-progress"></p>
+                <div class="flex flex-col items-center">
+                    <p id="vocabulary-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                    <input type="text" id="vocabulary-answer" class="input-field mb-4" placeholder="Type English here">
+                    <button id="check-vocabulary-btn" class="btn btn-primary">Check Answer</button>
+                    <div id="vocabulary-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                    <button id="next-vocabulary-btn" class="btn btn-secondary mt-4">Next Word</button>
+                </div>
             </div>
         </section>
 
         <!-- Particles Section -->
         <section id="particles" class="card">
             <h2 class="subsection-title">18. Particle Explanation with Examples.</h2>
-            <div class="mb-6">
-                <h3 class="text-xl font-semibold text-gray-700 mb-2">Particle Explanations:</h3>
-                <ul class="list-disc list-inside text-gray-700">
-                    <li><strong>wa Particle:</strong> Topic maker. Used after subject/noun.</li>
-                    <li><strong>no Particle:</strong> "of", "'s". Indicates belonging. Connects two nouns.</li>
-                    <li><strong>ka Particle:</strong> Forms a question at the end of a sentence.</li>
-                    <li><strong>kara Particle:</strong> Indicates starting time or place.</li>
-                    <li><strong>made Particle:</strong> Indicates finishing time or place. Usage: N1 kara N2 made.</li>
-                    <li><strong>ni Particle:</strong> Indicates place or time (after place). Usage: N ni V.</li>
-                    <li><strong>e Particle:</strong> Direction or destination particle for movement verbs. Can be replaced by "ni".</li>
-                    <li><strong>to Particle:</strong> "And" (connects nouns), "With" (doing something together). Usage: N1 to N2.</li>
-                    <li><strong>ga Particle:</strong> Object of some verbs (like, dislike, want). Tells who/what performs action.</li>
-                    <li><strong>de Particle:</strong> Indicates location of action, means/method.</li>
-                    <li><strong>o Particle:</strong> Indicates the object of verb. Used after verb.</li>
-                    <li><strong>mo Particle:</strong> "also" or "too".</li>
-                </ul>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-target="particles-learn">Learn</button>
+                <button class="tab-button" data-target="particles-practice">Practice</button>
             </div>
-            <h3 class="text-xl font-semibold text-gray-700 mb-4">Particle Exercise:</h3>
-            <p id="particle-progress" class="question-progress"></p>
-            <div class="flex flex-col items-center">
-                <p id="particle-sentence" class="text-xl text-gray-700 mb-4"></p>
-                <input type="text" id="particle-input" class="input-field mb-4" placeholder="Type the particle (e.g., wa)">
-                <button id="check-particle-btn" class="btn btn-primary">Check Answer</button>
-                <div id="particle-feedback" class="feedback mt-4 w-full max-w-lg"></div>
-                <button id="next-particle-btn" class="btn btn-secondary mt-4">Next Exercise</button>
+            <div id="particles-learn" class="learn-content"></div>
+            <div id="particles-practice" class="practice-content hidden">
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">Particle Exercise:</h3>
+                <p id="particle-progress" class="question-progress"></p>
+                <div class="flex flex-col items-center">
+                    <p id="particle-sentence" class="text-xl text-gray-700 mb-4"></p>
+                    <input type="text" id="particle-input" class="input-field mb-4" placeholder="Type the particle (e.g., wa)">
+                    <button id="check-particle-btn" class="btn btn-primary">Check Answer</button>
+                    <div id="particle-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                    <button id="next-particle-btn" class="btn btn-secondary mt-4">Next Exercise</button>
+                </div>
             </div>
         </section>
 
         <!-- Hiragana Section -->
         <section id="hiragana" class="card">
             <h2 class="subsection-title">19. Hiragana with Romaji</h2>
-            <div class="mb-6">
-                <h3 class="text-xl font-semibold text-gray-700 mb-2">Hiragana Chart:</h3>
-                <div class="grid grid-cols-5 gap-2 text-center text-lg font-mono">
-                    <div class="font-bold text-blue-700">あ (a)</div><div class="font-bold text-blue-700">い (i)</div><div class="font-bold text-blue-700">う (u)</div><div class="font-bold text-blue-700">え (e)</div><div class="font-bold text-blue-700">お (o)</div>
-                    <div>か (ka)</div><div>き (ki)</div><div>く (ku)</div><div>け (ke)</div><div>こ (ko)</div>
-                    <div>さ (sa)</div><div>し (shi)</div><div>す (su)</div><div>せ (se)</div><div>そ (so)</div>
-                    <div>た (ta)</div><div>ち (chi)</div><div>つ (tsu)</div><div>て (te)</div><div>と (to)</div>
-                    <div>な (na)</div><div>に (ni)</div><div>ぬ (nu)</div><div>ね (ne)</div><div>の (no)</div>
-                    <div>は (ha)</div><div>ひ (hi)</div><div>ふ (fu)</div><div>へ (he)</div><div>ほ (ho)</div>
-                    <div>ま (ma)</div><div>み (mi)</div><div>む (mu)</div><div>め (me)</div><div>も (mo)</div>
-                    <div>や (ya)</div><div></div><div>ゆ (yu)</div><div></div><div>よ (yo)</div>
-                    <div>ら (ra)</div><div>り (ri)</div><div>る (ru)</div><div>れ (re)</div><div>ろ (ro)</div>
-                    <div>わ (wa)</div><div></div><div></div><div></div><div>を (o)</div>
-                    <div>ん (n)</div><div></div><div></div><div></div><div></div>
-                </div>
-                <h3 class="text-xl font-semibold text-gray-700 mt-6 mb-2">Combined Sounds:</h3>
-                <div class="grid grid-cols-3 gap-2 text-center text-lg font-mono">
-                    <div>きゃ (kya)</div><div>きゅ (kyu)</div><div>きょ (kyo)</div>
-                    <div>ぎゃ (gya)</div><div>ぎゅ (gyu)</div><div>ぎょ (gyo)</div>
-                    <div>しゃ (sha)</div><div>しゅ (shu)</div><div>しょ (sho)</div>
-                    <div>じゃ (ja)</div><div>じゅ (ju)</div><div>じょ (jo)</div>
-                    <div>ちゃ (cha)</div><div>ちゅ (chu)</div><div>ちょ (cho)</div>
-                    <div>にゃ (nya)</div><div>にゅ (nyu)</div><div>にょ (nyo)</div>
-                    <div>ひゃ (hya)</div><div>ひゅ (hyu)</div><div>ひょ (hyo)</div>
-                    <div>びゃ (bya)</div><div>びゅ (byu)</div><div>びょ (byo)</div>
-                    <div>ぴゃ (pya)</div><div>ぴゅ (pyu)</div><div>ぴょ (pyo)</div>
-                    <div>みゃ (mya)</div><div>みゅ (myu)</div><div>みょ (myo)</div>
-                    <div>りゃ (rya)</div><div>りゅ (ryu)</div><div>りょ (ryo)</div>
-                </div>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-target="hiragana-learn">Learn</button>
+                <button class="tab-button" data-target="hiragana-practice">Practice</button>
             </div>
-            <h3 class="text-xl font-semibold text-gray-700 mb-4">Hiragana to Romaji Exercise:</h3>
-            <p id="hiragana-progress" class="question-progress"></p>
-            <div class="flex flex-col items-center">
-                <p id="hiragana-word" class="text-3xl font-bold text-blue-800 mb-4"></p>
-                <input type="text" id="romaji-input" class="input-field mb-4" placeholder="Type Romaji">
-                <button id="check-romaji-btn" class="btn btn-primary">Check Answer</button>
-                <div id="romaji-feedback" class="feedback mt-4 w-full max-w-lg"></div>
-                <button id="next-romaji-btn" class="btn btn-secondary mt-4">Next Word</button>
+            <div id="hiragana-learn" class="learn-content"></div>
+            <div id="hiragana-practice" class="practice-content hidden">
+                <h3 class="text-xl font-semibold text-gray-700 mb-4">Hiragana to Romaji Exercise:</h3>
+                <p id="hiragana-progress" class="question-progress"></p>
+                <div class="flex flex-col items-center">
+                    <p id="hiragana-word" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                    <input type="text" id="romaji-input" class="input-field mb-4" placeholder="Type Romaji">
+                    <button id="check-romaji-btn" class="btn btn-primary">Check Answer</button>
+                    <div id="romaji-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                    <button id="next-romaji-btn" class="btn btn-secondary mt-4">Next Word</button>
+                </div>
             </div>
         </section>
 
@@ -907,6 +972,473 @@
             { hiragana: 'コーヒー', romaji: 'koohii' }
         ];
 
+        // Learn Content Data (HTML strings)
+        const learnContent = {
+            greetings: `
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">1. Japanese Greetings</h3>
+                <ul class="list-disc list-inside ml-4">
+                    <li><strong>Konnichiwa:</strong> Hello / Hi</li>
+                    <li><strong>Ohayou gozaimasu:</strong> Good Morning</li>
+                    <li><strong>Arigatou gozaimasu:</strong> Thank you very much</li>
+                    <li><strong>Sumimasen:</strong> Excuse me</li>
+                    <li><strong>Ja mata:</strong> See You</li>
+                    <li><strong>Oyasumi nasai:</strong> Good Night</li>
+                    <li><strong>Douitashi mashite:</strong> You are welcome</li>
+                    <li><strong>Gomen-nasai:</strong> Sorry</li>
+                    <li><strong>Hajimemashite:</strong> How do you do</li>
+                    <li><strong>Konbanwa:</strong> Good Evening</li>
+                </ul>
+            `,
+            adjectives: `
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">2. na Adjectives</h3>
+                <ul class="list-disc list-inside ml-4">
+                    <li><strong>genki:</strong> healthy / energetic / cheerful</li>
+                    <li><strong>hima:</strong> free (not busy)</li>
+                    <li><strong>benri:</strong> convenient</li>
+                    <li><strong>suteki:</strong> lovely / wonderful / nice</li>
+                    <li><strong>suki:</strong> like</li>
+                    <li><strong>kirai:</b> dislike/hate</li>
+                    <li><strong>jouzu:</strong> skillful / good at</li>
+                    <li><strong>shizuka:</strong> quiet</li>
+                    <li><strong>nigiyaka:</strong> lively</li>
+                    <li><strong>heta:</strong> unskillful / poor at</li>
+                    <li><strong>kirei:</strong> beautiful</li>
+                </ul>
+                <h3 class="text-xl font-semibold text-gray-700 mt-4 mb-2">3. i Adjectives</h3>
+                <ul class="list-disc list-inside ml-4">
+                    <li><strong>furui:</strong> old</li>
+                    <li><strong>ii:</strong> good</li>
+                    <li><strong>warui:</strong> bad</li>
+                    <li><strong>atsui:</strong> hot</li>
+                    <li><strong>samui:</strong> cold</li>
+                    <li><strong>takai:</strong> costly</li>
+                    <li><strong>yasui:</strong> cheap</li>
+                    <li><strong>ooki:</strong> big</li>
+                    <li><strong>chiisai:</strong> small</li>
+                    <li><strong>isogashii:</strong> busy</li>
+                    <li><strong>tanoshii:</strong> enjoyable</li>
+                </ul>
+            `,
+            body_parts: `
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">4. Body Parts</h3>
+                <ul class="list-disc list-inside ml-4">
+                    <li><strong>atama:</strong> head</li>
+                    <li><strong>kao:</strong> face</li>
+                    <li><strong>mimi:</strong> ear</li>
+                    <li><strong>me:</strong> eye</li>
+                    <li><strong>kuchi:</strong> mouth</li>
+                    <li><strong>ha:</strong> teeth</li>
+                    <li><strong>kubi:</b> neck</li>
+                    <li><strong>kata:</strong> shoulder</li>
+                    <li><strong>te:</strong> hand</li>
+                    <li><strong>yubi:</strong> finger</li>
+                    <li><strong>onaka:</strong> stomach</li>
+                    <li><strong>ashi:</strong> leg</li>
+                    <li><strong>shinzou:</strong> heart</li>
+                </ul>
+            `,
+            verbs: `
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">5. Japanese Verbs</h3>
+                <ul class="list-disc list-inside ml-4">
+                    <li><strong>ikimasu:</strong> To go</li>
+                    <li><strong>kimasu:</strong> To come</li>
+                    <li><strong>yasumimasu:</strong> To take rest</li>
+                    <li><strong>nemasu:</strong> To sleep</li>
+                    <li><strong>kaerimasu:</strong> To return</li>
+                    <li><strong>tabemasu:</strong> To eat</li>
+                    <li><strong>nomimasu:</strong> To drink</li>
+                    <li><strong>kaimasu:</strong> To buy</li>
+                    <li><strong>kakimasu:</b> To write</li>
+                    <li><strong>shimasu:</strong> To do</li>
+                    <li><strong>mimasu:</strong> To see</li>
+                    <li><strong>wakarimasu:</strong> To understand</li>
+                </ul>
+                <h3 class="text-xl font-semibold text-gray-700 mt-4 mb-2">6. Conjugation of verbs or tenses of verbs</h3>
+                <p class="mb-2"><strong>Example 1 ---- taberu (To eat) - taberu is casual form</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Converting casual form to masu form:</li>
+                    <li>1. Remove the 'ru' from the verb => tabe</li>
+                    <li>2. Then add masu.=> tabe + masu => tabemasu (I will eat - present tense)</li>
+                    <li>3. Add masen to the step1 => tabe + masen => tabemasen (I will not eat - Present negative)</li>
+                    <li>4. Add mashita to the step 1 => tabe + mashita => tabe mashita (I ate past tense)</li>
+                    <li>5. Add masen deshita to the step 1 => tabe + masen deshita => tabemasendeshita (I didn't eat - past negative)</li>
+                </ul>
+                <p class="mt-4 mb-2"><strong>Example 2: nomu (To drink)</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>1. Replace last "u" to "i" => nomi</li>
+                    <li>2. Then add masu => nomi + masu => nomimasu (I will drink)</li>
+                    <li>3. Add masen to step1 => nomi + masen => nomimasen (I will not drink)</li>
+                    <li>4. Add mashita to step1 => nomi + mashita => nomimashita (I drank)</li>
+                    <li>5. Add masen deshita to step1 => nomi + masendeshita => nomimasendeshita (I didn't drink)</li>
+                </ul>
+                <p class="mt-2">Note: masu form is polite form.</p>
+            `,
+            existence: `
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">7. Existence</h3>
+                <p class="mb-2"><strong>a) Conjugated form of "aru" (There is --)</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Used for things, objects, trees (ki), bag, shop (mise), flower (hana), university (daigaku)</li>
+                    <li>Basically, for non-living things but it includes trees also.</li>
+                    <li>1. arimasu => there is</li>
+                    <li>2. arimasen => there is not</li>
+                    <li>3. arimashita => there was</li>
+                    <li>4. arimasen deshita => there was not</li>
+                </ul>
+                <p class="mt-2 mb-2"><strong>Example:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>1. There is a tree - ki ga arimasu</li>
+                    <li>2. There is not a tree - ki ga arimasen</li>
+                    <li>3. There was a tree - ki ga arimashita</li>
+                    <li>4. There was not a tree - ki ga arimasen-deshita</li>
+                </ul>
+                <p class="mt-4 mb-2"><strong>b) Conjugation of "iru"</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>iru (being ----) => For living things like person (hito), inu (dog), neko (cat)</li>
+                    <li>1. imasu - being / there is</li>
+                    <li>2. imasen - not being / there is not</li>
+                    <li>3. imashita - there was</li>
+                    <li>4. imasen-deshita - there was not</li>
+                </ul>
+                <p class="mt-2 mb-2"><strong>Example:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>1. There is a person => hito ga imasu</li>
+                    <li>2. There is no person => hito ga imasen</li>
+                    <li>3. There was person => hito ga imashita</li>
+                    <li>4. There was no person => hito ga imasen deshita</li>
+                </ul>
+                <p class="mt-2">Note: First need to check whether living or non-living and tense in the English sentence. then write aru, iru conjugates.</p>
+            `,
+            colors: `
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">8. Colors in Japanese</h3>
+                <ul class="list-disc list-inside ml-4">
+                    <li><strong>aka:</strong> red</li>
+                    <li><strong>shiro:</strong> white</li>
+                    <li><strong>kuro:</strong> black</li>
+                    <li><strong>ao:</strong> blue</li>
+                    <li><strong>midori:</strong> green</li>
+                    <li><strong>kin:</strong> gold</li>
+                    <li><strong>gin:</strong> silver</li>
+                    <li><strong>ki:</strong> yellow</li>
+                    <li><strong>mizu-iro:</strong> light blue</li>
+                    <li><strong>pinku:</strong> pink</li>
+                    <li><strong>kuriimu-iro:</strong> cream color</li>
+                </ul>
+            `,
+            family: `
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">9. Family Members</h3>
+                <ul class="list-disc list-inside ml-4">
+                    <li><strong>chichi:</strong> Father</li>
+                    <li><strong>haha:</strong> Mother</li>
+                    <li><strong>ani:</strong> Older Brother</li>
+                    <li><strong>ane:</strong> Older Sister</li>
+                    <li><strong>otouto:</strong> Younger Brother</li>
+                    <li><strong>imouto:</strong> Younger Sister</li>
+                    <li><strong>ojii san:</strong> Grandfather</li>
+                    <li><strong>obaa san:</strong> Grandmother</li>
+                    <li><strong>ojisan:</strong> uncle</li>
+                    <li><strong>obasan:</strong> aunt</li>
+                </ul>
+            `,
+            daily_expressions: `
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">10. Daily Expressions</h3>
+                <ul class="list-disc list-inside ml-4">
+                    <li><strong>Tadaima:</strong> I'm home</li>
+                    <li><strong>Okaerimasai:</strong> Welcome back</li>
+                    <li><strong>Itte kimasu:</strong> I'm leaving</li>
+                    <li><strong>Itte rasshai:</strong> Please go and come back</li>
+                    <li><strong>Bikkurishimashita:</strong> I was surprised</li>
+                    <li><strong>Wakarimashita:</strong> I understood</li>
+                    <li><strong>Wakarimasen:</strong> I don't understand</li>
+                    <li><strong>Yoku ganbarimashita:</strong> You did well</li>
+                    <li><strong>Wasuremashita:</strong> I forgot</li>
+                    <li><strong>Waratte kudasai:</strong> Please smile</li>
+                </ul>
+            `,
+            demonstratives: `
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">11. Sore, Kore, Sono, kono, ano</h3>
+                <ul class="list-disc list-inside ml-4">
+                    <li><strong>Kore:</strong> This</li>
+                    <li><strong>Sore:</strong> It</li>
+                    <li><strong>Are:</strong> That</li>
+                    <li><strong>Kono ---:</strong> This: followed by noun</li>
+                    <li><strong>Sono:</strong> Its: followed by noun</li>
+                    <li><strong>Ano ----:</strong> That: followed by noun</li>
+                </ul>
+                <p class="mt-2 mb-2"><strong>Example:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>1. Kore wa hon desu. => This is a book</li>
+                    <li>2. Sore wa hon desu => It is a book</li>
+                    <li>3. Kono hon wa watashi no desu => This book is mine</li>
+                    <li>4. Ano hon wa watashi no desu => That book is mine</li>
+                    <li>5. Kore ga sono ie desu. => This is the house</li>
+                    <li>6. Sono namae => Its name.</li>
+                </ul>
+            `,
+            self_introduction: `
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">12. Introduce yourself in Japanese</h3>
+                <ul class="list-disc list-inside ml-4">
+                    <li><strong>Hajimemashite:</strong> (How do you do)</li>
+                    <li><strong>Watashi no namae wa xyz desu.</strong> (My name is tejasu (tejas) or yuki)</li>
+                    <li><strong>Mangaruuru kara kimashita.</strong> (Iam from mnagalore)</li>
+                    <li><strong>Nitte daigaku no kougaku-bu no gakusei desu.</strong> (Iam student of engineering dept of nitte university)</li>
+                    <li><strong>Senkou wa denki - denshi desu</strong> (Major is eletrical and electronics)</li>
+                    <li><strong>Watashi no kazoku wa roku-nin de ryoushin to sofu to sobo to ane to watashi desu.</strong> (We are 6 members in family. And my parents, grandfather, grandmother, elder sister and me)</li>
+                    <li><strong>Ni juu issai desu.</strong> (Iam 21 yr old)</li>
+                    <li><strong>Ima nihongo o benkyou shite imasu.</strong> (Now iam studying japanese)</li>
+                    <li><strong>Douzo yoroshiku onegai shimasu.</strong> (Nice to meet you)</li>
+                </ul>
+                <h3 class="text-xl font-semibold text-gray-700 mt-4 mb-2">Department Names for reference</h3>
+                <ul class="list-disc list-inside ml-4">
+                    <li>denki-denshi (Eletrical and Electronics)</li>
+                    <li>denshi-tsuushin (Electrical and Communication)</li>
+                    <li>kikai-kougaku (Mechanical Engineering)</li>
+                    <li>doboku-kougaku (Civil Engineering)</li>
+                    <li>jouhou (Information)</li>
+                    <li>seibutsu-kougaku (Bio technology)</li>
+                    <li>konpyuuta saiensu (Computer science)</li>
+                    <li>AI</li>
+                    <li>ML</li>
+                    <li>AD</li>
+                </ul>
+            `,
+            kanji_numbers: `
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">13. Kanji from 1 to 10000</h3>
+                <ul class="list-disc list-inside ml-4">
+                    <li>1. 一 (ichi)</li>
+                    <li>2. 二 (ni)</li>
+                    <li>3. Ξ (san)</li>
+                    <li>4. 四 (yon / shi)</li>
+                    <li>5. $\hbar$ (go)</li>
+                    <li>6. 六 (roku)</li>
+                    <li>7. 七 (nana / shichi)</li>
+                    <li>8. $\pi$ (hachi)</li>
+                    <li>9. $\pm$ (kyuu / ku)</li>
+                    <li>10. $+$ (juu)</li>
+                    <li>11. 百 Hyaku (100)</li>
+                    <li>12. 千 Sen (1000)</li>
+                    <li>13. 万 man (10000)</li>
+                </ul>
+                <p class="mt-2 mb-2"><strong>Example:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>25 - ni juu go</li>
+                    <li>160 - hyaku roku juu</li>
+                    <li>1286 - sen ni hyaku hachi juu roku</li>
+                    <li>2006 - ni sen roku</li>
+                </ul>
+            `,
+            days: `
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">14. Weekly Days</h3>
+                <ul class="list-disc list-inside ml-4">
+                    <li>月曜日 (getsuyoubi): Monday</li>
+                    <li>火曜日 (kayoubi): Tuesday</li>
+                    <li>水曜日 (suiyoubi): Wednesday</li>
+                    <li>木曜日 (mokuyoubi): Thursday</li>
+                    <li>金曜日 (kinyoubi): Friday</li>
+                    <li>土曜日 (doyoubi): Saturday</li>
+                    <li>日曜日 (nichiyoubi): Sunday</li>
+                </ul>
+                <h3 class="text-xl font-semibold text-gray-700 mt-4 mb-2">15. Monthly Days</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                        <thead>
+                            <tr class="bg-blue-50">
+                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Date</th>
+                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Romaji</th>
+                            </tr>
+                        </thead>
+                        <tbody id="monthly-days-table-body-learn">
+                            <!-- Monthly days will be inserted here by JS -->
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mt-2 mb-2"><strong>Example:</strong> nen year, gatsu month, nichi - day</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>1990-06-12: sen kyuuhyaku kyuujuu nen - roku gatsu - juuninichi</li>
+                </ul>
+            `,
+            food: `
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">16. Food Items</h3>
+                <ul class="list-disc list-inside ml-4">
+                    <li><strong>onigiri:</strong> rice with pickle</li>
+                    <li><strong>mikan:</strong> mandarin orange</li>
+                    <li><strong>kome:</strong> uncooked rice</li>
+                    <li><strong>shio:</strong> salt</li>
+                    <li><strong>satou:</strong> sugar</li>
+                    <li><strong>su:</strong> vinegar</li>
+                    <li><strong>bataa:</strong> butter</li>
+                    <li><strong>chiizu:</strong> cheese</li>
+                    <li><strong>yasai:</strong> vegetables</li>
+                    <li><strong>okura:</strong> okra</li>
+                    <li><strong>sakana:</strong> fish</li>
+                    <li><strong>tamago:</strong> egg</li>
+                    <li><strong>ame:</strong> candy</li>
+                    <li><strong>okashi:</strong> sweet</li>
+                    <li><strong>mochi:</strong> rice cake</li>
+                    <li><strong>sake:</strong> Japanese rice wine</li>
+                    <li><strong>biiru:</strong> beer</li>
+                    <li><strong>niku:</strong> meat</li>
+                    <li><strong>tori niku:</b> chicken</li>
+                </ul>
+            `,
+            vocabulary: `
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">17. Vocabulary</h3>
+                <ul class="list-disc list-inside ml-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                    <li><strong>jisho:</strong> dictionary</li>
+                    <li><strong>douzo:</strong> please</li>
+                    <li><strong>hana:</strong> flowers</li>
+                    <li><strong>tsukue:</strong> desk</li>
+                    <li><strong>juusu:</strong> juice</li>
+                    <li><strong>mizu:</strong> water</li>
+                    <li><strong>chokoreeto:</strong> chocolate</li>
+                    <li><strong>hito:</strong> person</li>
+                    <li><strong>takushii:</strong> taxi</li>
+                    <li><strong>denwa:</strong> telephone</li>
+                    <li><strong>kamera:</strong> camera</li>
+                    <li><strong>gakusei:</strong> student</li>
+                    <li><strong>kami:</strong> paper</li>
+                    <li><strong>basho:</strong> place</li>
+                    <li><strong>daigaku:</strong> university</li>
+                    <li><strong>hon:</strong> book</li>
+                    <li><strong>tori:</strong> bird</li>
+                    <li><strong>indo:</strong> India</li>
+                    <li><strong>gakkou:</strong> school</li>
+                    <li><strong>neko:</strong> cat</li>
+                    <li><strong>eki:</strong> station</li>
+                    <li><strong>miseru:</strong> to show</li>
+                    <li><strong>kuruma:</strong> car</li>
+                    <li><strong>sensei:</strong> teacher</li>
+                    <li><strong>nihon:</strong> Japan</li>
+                    <li><strong>furansu:</strong> France</li>
+                    <li><strong>densha:</strong> train</li>
+                    <li><strong>kaze:</strong> wind</li>
+                    <li><strong>isu:</strong> chair</li>
+                    <li><strong>tomodachi:</strong> friend</li>
+                    <li><strong>kagi:</strong> key</li>
+                    <li><strong>shinbun:</strong> newspaper</li>
+                    <li><strong>kutsu:</strong> shoes</li>
+                    <li><strong>ikura:</strong> how much</li>
+                    <li><strong>kudasai:</strong> please give</li>
+                    <li><strong>terebi:</strong> television</li>
+                </ul>
+            `,
+            particles: `
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">18. Particle Explanation with Examples.</h3>
+                <ul class="list-disc list-inside ml-4">
+                    <li><strong>wa Particle:</strong> Topic maker. Used after subject/ noun to make statement.
+                        <ul class="list-circle list-inside ml-6">
+                            <li>Example: Watashi wa shun desu. (Iam shun)</li>
+                            <li>Example: Kore wa ringo desu. (This is an apple)</li>
+                            <li>Example: Nihon wa kirei desu. (Japan is beautiful.)</li>
+                            <li>Example: Inu wa kawaii desu. (Dogs are cute.)</li>
+                            <li><em>Desu: used after noun at the end of sentence.</em></li>
+                        </ul>
+                    </li>
+                    <li><strong>no Particle:</strong> Meanings are "of", "s". Indicating belonging. Used to connect two nouns
+                        <ul class="list-circle list-inside ml-6">
+                            <li>Example: Kore wa watashi no hon desu. (It is my book.)</li>
+                            <li>Example: Sore wa nihon no tabemono desu. (It is Japanese food.)</li>
+                            <li>Example: Kore wa kare no inu desu. (It is his dog.)</li>
+                            <li>Example: Sensei no kuruma desu. (It is the teacher's car.)</li>
+                        </ul>
+                    </li>
+                    <li><strong>ka Particle:</strong> A question is formed by simply adding ka to the end of sentence. Used at the end of the sentence to make interrogative form.
+                        <ul class="list-circle list-inside ml-6">
+                            <li>Example: Anata wa gakusei desu ka? (Are you a student?)</li>
+                            <li>Example: Inu desu ka? (Is it a dog?)</li>
+                            <li>Example: Nihon no tabemono desu ka? (Is it Japanese food?)</li>
+                        </ul>
+                    </li>
+                    <li><strong>kara Particle:</strong> Indicates the starting of the time or place</li>
+                    <li><strong>made Particle:</strong> Indicates the finishing time or place. Usage: N1 kara N2 made
+                        <ul class="list-circle list-inside ml-6">
+                            <li>Example: Gogo ichi-ji kara san-ji made terebi o mimasu. (I watch TV from 1 p.m. to 3 p.m.)</li>
+                            <li>Example: Uchi kara gakkou made arukimasu. (I walk from home to school.)</li>
+                            <li>Example: Eki kara ie made basu de ikimasu. (I go from the station to home by bus.)</li>
+                        </ul>
+                    </li>
+                    <li><strong>ni Particle:</strong> Used to indicate place or time. (Used after place). Usage: N ni V
+                        <ul class="list-circle list-inside ml-6">
+                            <li>Example: Roku ji han ni okimasu. (I get up at six thirty)</li>
+                            <li>Example: Nichiyoubi ni ikimasu. (I go on Sunday.)</li>
+                            <li>Example: Gakkou ni ikimasu. (I go to school.)</li>
+                            <li>Example: Ie ni kaerimasu. (I return home.)</li>
+                        </ul>
+                    </li>
+                    <li><strong>e Particle:</strong> When a verb indicates movement to a certain place, the particle e is put after the place to show the direction of movement. Particle e is a direction or destination particle. It shows the direction or goal of movement. It comes after a place and before a verb of motion (like go, come, return). Particle "e" can be replaced by "ni" also.
+                        <ul class="list-circle list-inside ml-6">
+                            <li>Example: Tokyo e ikimasu. (I will go to kyoto)</li>
+                            <li>Example: Nihon e kimashita. (I came to Japan.)</li>
+                        </ul>
+                    </li>
+                    <li><strong>to Particle:</strong> And - The particle to connects two nouns. With - Used to show doing something together. Usage: N1 to N2
+                        <ul class="list-circle list-inside ml-6">
+                            <li>Example: Ringo to mikan o tabemashita. (I ate an apple and a mandarin)</li>
+                            <li>Example: Tomodachi to asobimasu. (I play with my friend.)</li>
+                            <li>Example: Watashi to anata. (You and I)</li>
+                            <li>Example: Haha to dekakemasu. (I go out with my mother.)</li>
+                        </ul>
+                    </li>
+                    <li><strong>ga Particle:</strong> The object of some verbs marked with "ga" (ex: like, dislike, want). "ga" tells who or what to perform action.
+                        <ul class="list-circle list-inside ml-6">
+                            <li>Example: Watashi wa chokoreeto ga suki desu. (I like chocolates)</li>
+                            <li>Example: Neko ga imasu. (There is a cat.)</li>
+                            <li>Example: Nihongo ga wakarimasu. (I understand Japanese.)</li>
+                        </ul>
+                    </li>
+                    <li><strong>de Particle:</strong> Particleで (de) is used to indicate location of action, means/method.
+                        <ul class="list-circle list-inside ml-6">
+                            <li>Example: Densha de ikimasu. (I will go by train)</li>
+                            <li>Example: Hashi de gohan o tabemasu. (I eat rice with chopsticks.)</li>
+                            <li>Example: Nihongo de hanashimasu. (I speak in Japanese.)</li>
+                        </ul>
+                    </li>
+                    <li><strong>o Particle:</strong> Used to indicate the object of verb. And o is used after verb.
+                        <ul class="list-circle list-inside ml-6">
+                            <li>Example: Pan o tabemasu. (I eat bread.)</li>
+                            <li>Example: Mizu o nomimasu. (I drink water.)</li>
+                            <li>Example: Hon o yomimasu. (I read a book.)</li>
+                        </ul>
+                    </li>
+                    <li><strong>mo Particle:</strong> The particle も (mo) in Japanese means "also" or "too"
+                        <ul class="list-circle list-inside ml-6">
+                            <li>Example: watashi mo gakusei desu. (I am a student too.)</li>
+                            <li>Example: inu ga imasu. neko mo imasu.. (I have a dog. I have a cat too)</li>
+                        </ul>
+                    </li>
+                </ul>
+            `,
+            hiragana: `
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">19. Hiragana with Romaji</h3>
+                <div class="grid grid-cols-5 gap-2 text-center text-lg font-mono mb-4">
+                    <div class="font-bold text-blue-700">あ (a)</div><div class="font-bold text-blue-700">い (i)</div><div class="font-bold text-blue-700">う (u)</div><div class="font-bold text-blue-700">え (e)</div><div class="font-bold text-blue-700">お (o)</div>
+                    <div>か (ka)</div><div>き (ki)</div><div>く (ku)</div><div>け (ke)</div><div>こ (ko)</div>
+                    <div>さ (sa)</div><div>し (shi)</div><div>す (su)</div><div>せ (se)</div><div>そ (so)</div>
+                    <div>た (ta)</div><div>ち (chi)</div><div>つ (tsu)</div><div>て (te)</div><div>と (to)</div>
+                    <div>な (na)</div><div>に (ni)</div><div>ぬ (nu)</div><div>ね (ne)</div><div>の (no)</div>
+                    <div>は (ha)</div><div>ひ (hi)</div><div>ふ (fu)</div><div>へ (he)</div><div>ほ (ho)</div>
+                    <div>ま (ma)</div><div>み (mi)</div><div>む (mu)</div><div>め (me)</div><div>も (mo)</div>
+                    <div>や (ya)</div><div></div><div>ゆ (yu)</div><div></div><div>よ (yo)</div>
+                    <div>ら (ra)</div><div>り (ri)</div><div>る (ru)</div><div>れ (re)</div><div>ろ (ro)</div>
+                    <div>わ (wa)</div><div></div><div></div><div></div><div>を (o)</div>
+                    <div>ん (n)</div><div></div><div></div><div></div><div></div>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-700 mt-6 mb-2">Combined Sounds:</h3>
+                <div class="grid grid-cols-3 gap-2 text-center text-lg font-mono">
+                    <div>きゃ (kya)</div><div>きゅ (kyu)</div><div>きょ (kyo)</div>
+                    <div>ぎゃ (gya)</div><div>ぎゅ (gyu)</div><div>ぎょ (gyo)</div>
+                    <div>しゃ (sha)</div><div>しゅ (shu)</div><div>しょ (sho)</div>
+                    <div>じゃ (ja)</div><div>じゅ (ju)</div><div>じょ (jo)</div>
+                    <div>ちゃ (cha)</div><div>ちゅ (chu)</div><div>ちょ (cho)</div>
+                    <div>にゃ (nya)</div><div>niyu (nyu)</div><div>にょ (nyo)</div>
+                    <div>ひゃ (hya)</div><div>ひゅ (hyu)</div><div>ひょ (hyo)</div>
+                    <div>びゃ (bya)</div><div>びゅ (byu)</div><div>びょ (byo)</div>
+                    <div>ぴゃ (pya)</div><div>ぴゅ (pyu)</div><div>ぴょ (pyo)</div>
+                    <div>みゃ (mya)</div><div>みゅ (myu)</div><div>みょ (myo)</div>
+                    <div>りゃ (rya)</div><div>りゅ (ryu)</div><div>りょ (ryo)</div>
+                </div>
+            `
+        };
+
 
         document.addEventListener('DOMContentLoaded', () => {
             // Setup Quiz sections
@@ -1054,17 +1586,9 @@
             // --- Weekly Days Quiz ---
             setupQuiz(weeklyDaysData, 'weekly-day-question', 'weekly-day-answer', 'weekly-day-feedback', 'check-weekly-day-btn', 'next-weekly-day-btn', 'weekly-day-progress', 'japanese-to-english');
 
-            // --- Monthly Days Table Population ---
-            const monthlyDaysTableBody = document.getElementById('monthly-days-table-body');
-            monthlyDaysData.forEach(day => {
-                const row = document.createElement('tr');
-                row.classList.add('hover:bg-gray-50');
-                row.innerHTML = `
-                    <td class="py-2 px-4 border-b">${day.date}</td>
-                    <td class="py-2 px-4 border-b">${day.romaji}</td>
-                `;
-                monthlyDaysTableBody.appendChild(row);
-            });
+            // --- Monthly Days Table Population (for Learn tab) ---
+            // This block is now part of the learnContent.days string, so it's populated when that string is set to innerHTML.
+            // No direct JS manipulation here anymore to avoid duplicate declaration.
 
             // --- Date Conversion Quiz ---
             setupQuiz(dateConversionExercises, 'date-conversion-question', 'date-conversion-answer', 'date-conversion-feedback', 'check-date-conversion-btn', 'next-date-conversion-btn', 'date-conversion-progress', 'date-to-japanese');
@@ -1075,6 +1599,63 @@
 
             // --- Hiragana to Romaji Logic ---
             setupQuiz(hiraganaRomajiExercises, 'hiragana-word', 'romaji-input', 'romaji-feedback', 'check-romaji-btn', 'next-romaji-btn', 'hiragana-progress', 'hiragana-to-romaji');
+
+            // --- Tab Switching Logic ---
+            document.querySelectorAll('.tab-buttons').forEach(tabContainer => {
+                const buttons = tabContainer.querySelectorAll('.tab-button');
+                buttons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const targetId = button.dataset.target;
+                        const parentSection = button.closest('section');
+
+                        // Deactivate all buttons in this container
+                        buttons.forEach(btn => btn.classList.remove('active'));
+                        // Activate the clicked button
+                        button.classList.add('active');
+
+                        // Hide all content divs in this section
+                        parentSection.querySelectorAll('.learn-content, .practice-content').forEach(contentDiv => {
+                            contentDiv.classList.add('hidden');
+                        });
+
+                        // Show the target content div
+                        document.getElementById(targetId).classList.remove('hidden');
+                    });
+                });
+            });
+
+            // Populate Learn Content
+            document.getElementById('greetings-learn').innerHTML = learnContent.greetings;
+            document.getElementById('adjectives-learn').innerHTML = learnContent.adjectives;
+            document.getElementById('body-parts-learn').innerHTML = learnContent.body_parts;
+            document.getElementById('verbs-learn').innerHTML = learnContent.verbs;
+            document.getElementById('existence-learn').innerHTML = learnContent.existence;
+            document.getElementById('colors-learn').innerHTML = learnContent.colors;
+            document.getElementById('family-learn').innerHTML = learnContent.family;
+            document.getElementById('daily-expressions-learn').innerHTML = learnContent.daily_expressions;
+            document.getElementById('demonstratives-learn').innerHTML = learnContent.demonstratives;
+            document.getElementById('self-introduction-learn').innerHTML = learnContent.self_introduction;
+            document.getElementById('kanji-numbers-learn').innerHTML = learnContent.kanji_numbers;
+            document.getElementById('days-learn').innerHTML = learnContent.days; // This line creates the tbody#monthly-days-table-body-learn
+            document.getElementById('food-learn').innerHTML = learnContent.food;
+            document.getElementById('vocabulary-learn').innerHTML = learnContent.vocabulary;
+            document.getElementById('particles-learn').innerHTML = learnContent.particles;
+            document.getElementById('hiragana-learn').innerHTML = learnContent.hiragana;
+
+            // Re-populate monthly days table for the learn section specifically
+            // This now runs AFTER the innerHTML is set, ensuring the tbody exists.
+            const monthlyDaysTableBodyLearn = document.getElementById('monthly-days-table-body-learn');
+            if (monthlyDaysTableBodyLearn) { // Check if element exists
+                monthlyDaysData.forEach(day => {
+                    const row = document.createElement('tr');
+                    row.classList.add('hover:bg-gray-50');
+                    row.innerHTML = `
+                        <td class="py-2 px-4 border-b">${day.date}</td>
+                        <td class="py-2 px-4 border-b">${day.romaji}</td>
+                    `;
+                    monthlyDaysTableBodyLearn.appendChild(row);
+                });
+            }
         });
     </script>
 </body>
