@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Japanese Learning</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+            color: #334155; /* Darker text */
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: transform 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .section-title {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 700; /* font-bold */
+            color: #1e3a8a; /* Dark blue */
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .subsection-title {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 600; /* font-semibold */
+            color: #3b82f6; /* Blue */
+            margin-bottom: 16px;
+            border-bottom: 2px solid #bfdbfe; /* Light blue border */
+            padding-bottom: 8px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+        }
+        .btn-primary {
+            background-color: #3b82f6; /* Blue */
+            color: #ffffff;
+        }
+        .btn-primary:hover {
+            background-color: #2563eb; /* Darker blue */
+            transform: translateY(-1px);
+        }
+        .btn-secondary {
+            background-color: #60a5fa; /* Light blue */
+            color: #ffffff;
+        }
+        .btn-secondary:hover {
+            background-color: #3b82f6; /* Blue */
+            transform: translateY(-1px);
+        }
+        .input-field {
+            border: 1px solid #cbd5e1; /* Gray-300 */
+            border-radius: 8px;
+            padding: 10px;
+            width: 100%;
+            max-width: 300px;
+            margin-top: 8px;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .feedback.correct {
+            background-color: #d1fae5; /* Green-100 */
+            color: #065f46; /* Green-700 */
+        }
+        .feedback.incorrect {
+            background-color: #fee2e2; /* Red-100 */
+            color: #b91c1c; /* Red-700 */
+        }
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        @media (max-width: 768px) {
+            .grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="container">
+        <h1 class="section-title mb-8">Interactive Japanese Learning App</h1>
+
+        <!-- Navigation -->
+        <nav class="mb-8 p-4 bg-blue-100 rounded-lg shadow-md">
+            <ul class="flex flex-wrap justify-center gap-4">
+                <li><a href="#greetings" class="text-blue-700 hover:text-blue-900 font-semibold">Greetings</a></li>
+                <li><a href="#adjectives" class="text-blue-700 hover:text-blue-900 font-semibold">Adjectives</a></li>
+                <li><a href="#body-parts" class="text-blue-700 hover:text-blue-900 font-semibold">Body Parts</a></li>
+                <li><a href="#verbs" class="text-blue-700 hover:text-blue-900 font-semibold">Verbs</a></li>
+                <li><a href="#existence" class="text-blue-700 hover:text-blue-900 font-semibold">Existence</a></li>
+                <li><a href="#colors" class="text-blue-700 hover:text-blue-900 font-semibold">Colors</a></li>
+                <li><a href="#family" class="text-blue-700 hover:text-blue-900 font-semibold">Family</a></li>
+                <li><a href="#daily-expressions" class="text-blue-700 hover:text-blue-900 font-semibold">Daily Expressions</a></li>
+                <li><a href="#demonstratives" class="text-blue-700 hover:text-blue-900 font-semibold">Demonstratives</a></li>
+                <li><a href="#kanji-numbers" class="text-blue-700 hover:text-blue-900 font-semibold">Kanji Numbers</a></li>
+                <li><a href="#days" class="text-blue-700 hover:text-blue-900 font-semibold">Days</a></li>
+                <li><a href="#food" class="text-blue-700 hover:text-blue-900 font-semibold">Food</a></li>
+                <li><a href="#vocabulary" class="text-blue-700 hover:text-blue-900 font-semibold">Vocabulary</a></li>
+                <li><a href="#particles" class="text-blue-700 hover:text-blue-900 font-semibold">Particles</a></li>
+                <li><a href="#hiragana" class="text-blue-700 hover:text-blue-900 font-semibold">Hiragana</a></li>
+            </ul>
+        </nav>
+
+        <!-- Greetings Section -->
+        <section id="greetings" class="card">
+            <h2 class="subsection-title">1. Japanese Greetings</h2>
+            <div class="flex flex-col items-center">
+                <p id="greeting-japanese" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                <p id="greeting-english" class="text-xl text-gray-700 mb-4 hidden"></p>
+                <div class="flex gap-4">
+                    <button id="show-greeting-btn" class="btn btn-secondary">Show English</button>
+                    <button id="next-greeting-btn" class="btn btn-primary">Next Greeting</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Adjectives Section -->
+        <section id="adjectives" class="card">
+            <h2 class="subsection-title">2. na & 3. i Adjectives</h2>
+            <div class="flex flex-col items-center">
+                <p id="adjective-japanese" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                <p id="adjective-english" class="text-xl text-gray-700 mb-4 hidden"></p>
+                <div class="flex gap-4">
+                    <button id="show-adjective-btn" class="btn btn-secondary">Show English</button>
+                    <button id="next-adjective-btn" class="btn btn-primary">Next Adjective</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Body Parts Section -->
+        <section id="body-parts" class="card">
+            <h2 class="subsection-title">4. Body Parts</h2>
+            <div class="flex flex-col items-center">
+                <p id="bodypart-japanese" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                <p id="bodypart-english" class="text-xl text-gray-700 mb-4 hidden"></p>
+                <div class="flex gap-4">
+                    <button id="show-bodypart-btn" class="btn btn-secondary">Show English</button>
+                    <button id="next-bodypart-btn" class="btn btn-primary">Next Body Part</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Verbs & Conjugation Section -->
+        <section id="verbs" class="card">
+            <h2 class="subsection-title">5. Japanese Verbs & 6. Conjugation</h2>
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">Verb List:</h3>
+                <ul id="verb-list" class="list-disc list-inside grid grid-cols-2 sm:grid-cols-3 gap-2"></ul>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-700 mb-4">Conjugation Exercise:</h3>
+            <div class="flex flex-col items-center">
+                <p id="conjugation-verb-casual" class="text-2xl font-bold text-blue-800 mb-4">Verb: <span id="current-casual-verb"></span></p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-lg">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-1">Present (masu):</label>
+                        <input type="text" id="verb-masu" class="input-field" placeholder="e.g., tabemasu">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-1">Present Negative (masen):</label>
+                        <input type="text" id="verb-masen" class="input-field" placeholder="e.g., tabemasen">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-1">Past (mashita):</label>
+                        <input type="text" id="verb-mashita" class="input-field" placeholder="e.g., tabemashita">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-1">Past Negative (masen deshita):</label>
+                        <input type="text" id="verb-masen-deshita" class="input-field" placeholder="e.g., tabemasendeshita">
+                    </div>
+                </div>
+                <button id="check-conjugation-btn" class="btn btn-primary mt-6">Check Answers</button>
+                <div id="conjugation-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                <button id="next-conjugation-btn" class="btn btn-secondary mt-4">Next Verb</button>
+            </div>
+        </section>
+
+        <!-- Existence Section -->
+        <section id="existence" class="card">
+            <h2 class="subsection-title">7. Existence (aru/iru)</h2>
+            <div class="flex flex-col items-center">
+                <p id="existence-sentence" class="text-xl text-gray-700 mb-4"></p>
+                <select id="existence-answer" class="input-field mb-4">
+                    <option value="">Select an option</option>
+                    <option value="arimasu">arimasu</option>
+                    <option value="arimasen">arimasen</option>
+                    <option value="arimashita">arimashita</option>
+                    <option value="arimasen deshita">arimasen deshita</option>
+                    <option value="imasu">imasu</option>
+                    <option value="imasen">imasen</option>
+                    <option value="imashita">imashita</option>
+                    <option value="imasen deshita">imasen deshita</option>
+                </select>
+                <button id="check-existence-btn" class="btn btn-primary">Check Answer</button>
+                <div id="existence-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                <button id="next-existence-btn" class="btn btn-secondary mt-4">Next Exercise</button>
+            </div>
+        </section>
+
+        <!-- Colors Section -->
+        <section id="colors" class="card">
+            <h2 class="subsection-title">8. Colors in Japanese</h2>
+            <div class="flex flex-col items-center">
+                <p id="color-japanese" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                <p id="color-english" class="text-xl text-gray-700 mb-4 hidden"></p>
+                <div class="flex gap-4">
+                    <button id="show-color-btn" class="btn btn-secondary">Show English</button>
+                    <button id="next-color-btn" class="btn btn-primary">Next Color</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Family Members Section -->
+        <section id="family" class="card">
+            <h2 class="subsection-title">9. Family Members</h2>
+            <div class="flex flex-col items-center">
+                <p id="family-japanese" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                <p id="family-english" class="text-xl text-gray-700 mb-4 hidden"></p>
+                <div class="flex gap-4">
+                    <button id="show-family-btn" class="btn btn-secondary">Show English</button>
+                    <button id="next-family-btn" class="btn btn-primary">Next Member</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daily Expressions Section -->
+        <section id="daily-expressions" class="card">
+            <h2 class="subsection-title">10. Daily Expressions</h2>
+            <div class="flex flex-col items-center">
+                <p id="expression-japanese" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                <p id="expression-english" class="text-xl text-gray-700 mb-4 hidden"></p>
+                <div class="flex gap-4">
+                    <button id="show-expression-btn" class="btn btn-secondary">Show English</button>
+                    <button id="next-expression-btn" class="btn btn-primary">Next Expression</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demonstratives Section -->
+        <section id="demonstratives" class="card">
+            <h2 class="subsection-title">11. Sore, Kore, Sono, kono, ano</h2>
+            <div class="flex flex-col items-center">
+                <p id="demonstrative-sentence" class="text-xl text-gray-700 mb-4"></p>
+                <input type="text" id="demonstrative-input" class="input-field mb-4" placeholder="Type the demonstrative (e.g., Kore)">
+                <button id="check-demonstrative-btn" class="btn btn-primary">Check Answer</button>
+                <div id="demonstrative-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                <button id="next-demonstrative-btn" class="btn btn-secondary mt-4">Next Exercise</button>
+            </div>
+        </section>
+
+        <!-- Self-Introduction Section -->
+        <section id="self-introduction" class="card">
+            <h2 class="subsection-title">12. Introduce yourself in Japanese</h2>
+            <div class="text-lg text-gray-700 leading-relaxed">
+                <p><strong>Hajimemashite</strong> (How do you do)</p>
+                <p><strong>Watashi no namae wa [Your Name] desu.</strong> (My name is [Your Name])</p>
+                <p><strong>Mangaruuru kara kimashita.</strong> (I am from Mangalore)</p>
+                <p><strong>Nitte daigaku no kougaku-bu no gakusei desu.</strong> (I am a student of the engineering dept. of Nitte University)</p>
+                <p><strong>Senkou wa [Your Major] desu</strong> (Major is [Your Major])</p>
+                <p><strong>Watashi no kazoku wa roku-nin de ryoushin to sofu to sobo to ane to watashi desu.</strong> (We are 6 members in family. And my parents, grandfather, grandmother, elder sister and me)</p>
+                <p><strong>Ni juu issai desu.</strong> (I am 21 yr old)</p>
+                <p><strong>Ima nihongo o benkyou shite imasu.</strong> (Now I am studying Japanese)</p>
+                <p><strong>Douzo yoroshiku onegai shimasu.</strong> (Nice to meet you)</p>
+                <p class="mt-4 text-sm text-gray-500">
+                    *Replace [Your Name] and [Your Major] with your actual information.*
+                </p>
+            </div>
+        </section>
+
+        <!-- Kanji Numbers Section -->
+        <section id="kanji-numbers" class="card">
+            <h2 class="subsection-title">13. Kanji from 1 to 10000</h2>
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">Basic Kanji Numbers:</h3>
+                <ul class="list-disc list-inside grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    <li>一 (ichi) - 1</li>
+                    <li>二 (ni) - 2</li>
+                    <li>Ξ (san) - 3</li>
+                    <li>四 (yon / shi) - 4</li>
+                    <li>$\hbar$ (go) - 5</li>
+                    <li>六 (roku) - 6</li>
+                    <li>七 (nana / shichi) - 7</li>
+                    <li>$\pi$ (hachi) - 8</li>
+                    <li>$\pm$ (kyuu / ku) - 9</li>
+                    <li>$+$ (juu) - 10</li>
+                    <li>百 (Hyaku) - 100</li>
+                    <li>千 (Sen) - 1000</li>
+                    <li>万 (man) - 10000</li>
+                </ul>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-700 mb-4">Number Conversion Exercise:</h3>
+            <div class="flex flex-col items-center">
+                <p id="number-to-convert" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                <input type="text" id="kanji-number-input" class="input-field mb-4" placeholder="Type in Japanese Romaji">
+                <button id="check-kanji-number-btn" class="btn btn-primary">Check Answer</button>
+                <div id="kanji-number-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                <button id="next-kanji-number-btn" class="btn btn-secondary mt-4">Next Number</button>
+            </div>
+        </section>
+
+        <!-- Days Section -->
+        <section id="days" class="card">
+            <h2 class="subsection-title">14. Weekly Days & 15. Monthly Days</h2>
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">Weekly Days:</h3>
+                <ul class="list-disc list-inside grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    <li>月曜日 (getsuyoubi) - Monday</li>
+                    <li>火曜日 (kayoubi) - Tuesday</li>
+                    <li>水曜日 (suiyoubi) - Wednesday</li>
+                    <li>木曜日 (mokuyoubi) - Thursday</li>
+                    <li>金曜日 (kinyoubi) - Friday</li>
+                    <li>土曜日 (doyoubi) - Saturday</li>
+                    <li>日曜日 (nichiyoubi) - Sunday</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">Monthly Days:</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                        <thead>
+                            <tr class="bg-blue-50">
+                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Date</th>
+                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Romaji</th>
+                            </tr>
+                        </thead>
+                        <tbody id="monthly-days-table-body">
+                            <!-- Monthly days will be inserted here by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Food Items Section -->
+        <section id="food" class="card">
+            <h2 class="subsection-title">16. Food Items</h2>
+            <div class="flex flex-col items-center">
+                <p id="food-japanese" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                <p id="food-english" class="text-xl text-gray-700 mb-4 hidden"></p>
+                <div class="flex gap-4">
+                    <button id="show-food-btn" class="btn btn-secondary">Show English</button>
+                    <button id="next-food-btn" class="btn btn-primary">Next Food Item</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vocabulary Section -->
+        <section id="vocabulary" class="card">
+            <h2 class="subsection-title">17. Vocabulary</h2>
+            <div class="flex flex-col items-center">
+                <p id="vocabulary-japanese" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                <p id="vocabulary-english" class="text-xl text-gray-700 mb-4 hidden"></p>
+                <div class="flex gap-4">
+                    <button id="show-vocabulary-btn" class="btn btn-secondary">Show English</button>
+                    <button id="next-vocabulary-btn" class="btn btn-primary">Next Word</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Particles Section -->
+        <section id="particles" class="card">
+            <h2 class="subsection-title">18. Particle Explanation with Examples</h2>
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">Particle Explanations:</h3>
+                <ul class="list-disc list-inside text-gray-700">
+                    <li><strong>wa Particle:</strong> Topic maker. Used after subject/noun.</li>
+                    <li><strong>no Particle:</strong> "of", "'s". Indicates belonging. Connects two nouns.</li>
+                    <li><strong>ka Particle:</strong> Forms a question at the end of a sentence.</li>
+                    <li><strong>kara Particle:</strong> Indicates starting time or place.</li>
+                    <li><strong>made Particle:</strong> Indicates finishing time or place. Usage: N1 kara N2 made.</li>
+                    <li><strong>ni Particle:</strong> Indicates place or time (after place). Usage: N ni V.</li>
+                    <li><strong>e Particle:</strong> Direction or destination particle for movement verbs. Can be replaced by "ni".</li>
+                    <li><strong>to Particle:</strong> "And" (connects nouns), "With" (doing something together). Usage: N1 to N2.</li>
+                    <li><strong>ga Particle:</strong> Object of some verbs (like, dislike, want). Tells who/what performs action.</li>
+                    <li><strong>de Particle:</strong> Indicates location of action, means/method.</li>
+                    <li><strong>o Particle:</strong> Indicates the object of verb. Used after verb.</li>
+                    <li><strong>mo Particle:</strong> "also" or "too".</li>
+                </ul>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-700 mb-4">Particle Exercise:</h3>
+            <div class="flex flex-col items-center">
+                <p id="particle-sentence" class="text-xl text-gray-700 mb-4"></p>
+                <input type="text" id="particle-input" class="input-field mb-4" placeholder="Type the particle (e.g., wa)">
+                <button id="check-particle-btn" class="btn btn-primary">Check Answer</button>
+                <div id="particle-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                <button id="next-particle-btn" class="btn btn-secondary mt-4">Next Exercise</button>
+            </div>
+        </section>
+
+        <!-- Hiragana Section -->
+        <section id="hiragana" class="card">
+            <h2 class="subsection-title">19. Hiragana with Romaji</h2>
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">Hiragana Chart:</h3>
+                <div class="grid grid-cols-5 gap-2 text-center text-lg font-mono">
+                    <div class="font-bold text-blue-700">あ (a)</div><div class="font-bold text-blue-700">い (i)</div><div class="font-bold text-blue-700">う (u)</div><div class="font-bold text-blue-700">え (e)</div><div class="font-bold text-blue-700">お (o)</div>
+                    <div>か (ka)</div><div>き (ki)</div><div>く (ku)</div><div>け (ke)</div><div>こ (ko)</div>
+                    <div>さ (sa)</div><div>し (shi)</div><div>す (su)</div><div>せ (se)</div><div>そ (so)</div>
+                    <div>た (ta)</div><div>ち (chi)</div><div>つ (tsu)</div><div>て (te)</div><div>と (to)</div>
+                    <div>な (na)</div><div>に (ni)</div><div>ぬ (nu)</div><div>ね (ne)</div><div>の (no)</div>
+                    <div>は (ha)</div><div>ひ (hi)</div><div>ふ (fu)</div><div>へ (he)</div><div>ほ (ho)</div>
+                    <div>ま (ma)</div><div>み (mi)</div><div>む (mu)</div><div>め (me)</div><div>も (mo)</div>
+                    <div>や (ya)</div><div></div><div>ゆ (yu)</div><div></div><div>よ (yo)</div>
+                    <div>ら (ra)</div><div>り (ri)</div><div>る (ru)</div><div>れ (re)</div><div>ろ (ro)</div>
+                    <div>わ (wa)</div><div></div><div></div><div></div><div>を (o)</div>
+                    <div>ん (n)</div><div></div><div></div><div></div><div></div>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-700 mt-6 mb-2">Combined Sounds:</h3>
+                <div class="grid grid-cols-3 gap-2 text-center text-lg font-mono">
+                    <div>きゃ (kya)</div><div>きゅ (kyu)</div><div>きょ (kyo)</div>
+                    <div>ぎゃ (gya)</div><div>ぎゅ (gyu)</div><div>ぎょ (gyo)</div>
+                    <div>しゃ (sha)</div><div>しゅ (shu)</div><div>しょ (sho)</div>
+                    <div>じゃ (ja)</div><div>じゅ (ju)</div><div>じょ (jo)</div>
+                    <div>ちゃ (cha)</div><div>ちゅ (chu)</div><div>ちょ (cho)</div>
+                    <div>にゃ (nya)</div><div>にゅ (nyu)</div><div>にょ (nyo)</div>
+                    <div>ひゃ (hya)</div><div>ひゅ (hyu)</div><div>ひょ (hyo)</div>
+                    <div>びゃ (bya)</div><div>びゅ (byu)</div><div>びょ (byo)</div>
+                    <div>ぴゃ (pya)</div><div>ぴゅ (pyu)</div><div>ぴょ (pyo)</div>
+                    <div>みゃ (mya)</div><div>みゅ (myu)</div><div>みょ (myo)</div>
+                    <div>りゃ (rya)</div><div>りゅ (ryu)</div><div>りょ (ryo)</div>
+                </div>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-700 mb-4">Hiragana to Romaji Exercise:</h3>
+            <div class="flex flex-col items-center">
+                <p id="hiragana-word" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                <input type="text" id="romaji-input" class="input-field mb-4" placeholder="Type Romaji">
+                <button id="check-romaji-btn" class="btn btn-primary">Check Answer</button>
+                <div id="romaji-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                <button id="next-romaji-btn" class="btn btn-secondary mt-4">Next Word</button>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Helper function to shuffle an array
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Generic Flashcard/Reveal Logic
+        function setupFlashcard(data, japaneseElId, englishElId, showBtnId, nextBtnId) {
+            let currentIndex = 0;
+            let shuffledData = shuffleArray([...data]);
+
+            const japaneseEl = document.getElementById(japaneseElId);
+            const englishEl = document.getElementById(englishElId);
+            const showBtn = document.getElementById(showBtnId);
+            const nextBtn = document.getElementById(nextBtnId);
+
+            function displayCard() {
+                japaneseEl.textContent = shuffledData[currentIndex].japanese;
+                englishEl.textContent = shuffledData[currentIndex].english;
+                englishEl.classList.add('hidden');
+                showBtn.textContent = 'Show English';
+            }
+
+            showBtn.addEventListener('click', () => {
+                englishEl.classList.toggle('hidden');
+                showBtn.textContent = englishEl.classList.contains('hidden') ? 'Show English' : 'Hide English';
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % shuffledData.length;
+                displayCard();
+            });
+
+            displayCard(); // Initial display
+        }
+
+        // Data for sections
+        const greetingsData = [
+            { japanese: 'Konnichiwa', english: 'Hello / Hi' },
+            { japanese: 'Ohayou gozaimasu', english: 'Good Morning' },
+            { japanese: 'Arigatou gozaimasu', english: 'Thank you very much' },
+            { japanese: 'Sumimasen', english: 'Excuse me' },
+            { japanese: 'Ja mata', english: 'See You' },
+            { japanese: 'Oyasumi nasai', english: 'Good Night' },
+            { japanese: 'Douitashi mashite', english: 'You are welcome' },
+            { japanese: 'Gomen-nasai', english: 'Sorry' },
+            { japanese: 'Hajimemashite', english: 'How do you do' },
+            { japanese: 'Konbanwa', english: 'Good Evening' }
+        ];
+
+        const adjectivesData = [
+            { japanese: 'genki', english: 'healthy / energetic / cheerful' },
+            { japanese: 'hima', english: 'free (not busy)' },
+            { japanese: 'benri', english: 'convenient' },
+            { japanese: 'suteki', english: 'lovely / wonderful / nice' },
+            { japanese: 'suki', english: 'like' },
+            { japanese: 'kirai', english: 'dislike/hate' },
+            { japanese: 'jouzu', english: 'skillful / good at' },
+            { japanese: 'shizuka', english: 'quiet' },
+            { japanese: 'nigiyaka', english: 'lively' },
+            { japanese: 'heta', english: 'unskillful / poor at' },
+            { japanese: 'kirei', english: 'beautiful' },
+            { japanese: 'furui', english: 'old' },
+            { japanese: 'ii', english: 'good' },
+            { japanese: 'warui', english: 'bad' },
+            { japanese: 'atsui', english: 'hot' },
+            { japanese: 'samui', english: 'cold' },
+            { japanese: 'takai', english: 'costly' },
+            { japanese: 'yasui', english: 'cheap' },
+            { japanese: 'ooki', english: 'big' },
+            { japanese: 'chiisai', english: 'small' },
+            { japanese: 'isogashii', english: 'busy' },
+            { japanese: 'tanoshii', english: 'enjoyable' }
+        ];
+
+        const bodyPartsData = [
+            { japanese: 'atama', english: 'head' },
+            { japanese: 'kao', english: 'face' },
+            { japanese: 'mimi', english: 'ear' },
+            { japanese: 'me', english: 'eye' },
+            { japanese: 'kuchi', english: 'mouth' },
+            { japanese: 'ha', english: 'teeth' },
+            { japanese: 'kubi', english: 'neck' },
+            { japanese: 'kata', english: 'shoulder' },
+            { japanese: 'te', english: 'hand' },
+            { japanese: 'yubi', english: 'finger' },
+            { japanese: 'onaka', english: 'stomach' },
+            { japanese: 'ashi', english: 'leg' },
+            { japanese: 'shinzou', english: 'heart' }
+        ];
+
+        const colorsData = [
+            { japanese: 'aka', english: 'red' },
+            { japanese: 'shiro', english: 'white' },
+            { japanese: 'kuro', english: 'black' },
+            { japanese: 'ao', english: 'blue' },
+            { japanese: 'midori', english: 'green' },
+            { japanese: 'kin', english: 'gold' },
+            { japanese: 'gin', english: 'silver' },
+            { japanese: 'ki', english: 'yellow' },
+            { japanese: 'mizu-iro', english: 'light blue' },
+            { japanese: 'pinku', english: 'pink' },
+            { japanese: 'kuriimu-iro', english: 'cream color' }
+        ];
+
+        const familyData = [
+            { japanese: 'chichi', english: 'Father' },
+            { japanese: 'haha', english: 'Mother' },
+            { japanese: 'ani', english: 'Older Brother' },
+            { japanese: 'ane', english: 'Older Sister' },
+            { japanese: 'otouto', english: 'Younger Brother' },
+            { japanese: 'imouto', english: 'Younger Sister' },
+            { japanese: 'ojii san', english: 'Grandfather' },
+            { japanese: 'obaa san', english: 'Grandmother' },
+            { japanese: 'ojisan', english: 'uncle' },
+            { japanese: 'obasan', english: 'aunt' }
+        ];
+
+        const dailyExpressionsData = [
+            { japanese: 'Tadaima', english: "I'm home" },
+            { japanese: 'Okaerinasai', english: 'Welcome back' },
+            { japanese: 'Itte kimasu', english: "I'm leaving" },
+            { japanese: 'Itte rasshai', english: 'Please go and come back' },
+            { japanese: 'Bikkurishimashita', english: 'I was surprised' },
+            { japanese: 'Wakarimashita', english: 'I understood' },
+            { japanese: 'Wakarimasen', english: "I don't understand" },
+            { japanese: 'Yoku ganbarimashita', english: 'You did well' },
+            { japanese: 'Wasuremashita', english: 'I forgot' },
+            { japanese: 'Waratte kudasai', english: 'Please smile' }
+        ];
+
+        const foodData = [
+            { japanese: 'onigiri', english: 'rice with pickle' },
+            { japanese: 'mikan', english: 'mandarin orange' },
+            { japanese: 'kome', english: 'uncooked rice' },
+            { japanese: 'shio', english: 'salt' },
+            { japanese: 'satou', english: 'sugar' },
+            { japanese: 'su', english: 'vinegar' },
+            { japanese: 'bataa', english: 'butter' },
+            { japanese: 'chiizu', english: 'cheese' },
+            { japanese: 'yasai', english: 'vegetables' },
+            { japanese: 'okura', english: 'okra' },
+            { japanese: 'sakana', english: 'fish' },
+            { japanese: 'tamago', english: 'egg' },
+            { japanese: 'ame', english: 'candy' },
+            { japanese: 'okashi', english: 'sweet' },
+            { japanese: 'mochi', english: 'rice cake' },
+            { japanese: 'sake', english: 'Japanese rice wine' },
+            { japanese: 'biiru', english: 'beer' },
+            { japanese: 'niku', english: 'meat' },
+            { japanese: 'tori niku', english: 'chicken' }
+        ];
+
+        const vocabularyData = [
+            { japanese: 'jisho', english: 'dictionary' },
+            { japanese: 'douzo', english: 'please' },
+            { japanese: 'hana', english: 'flowers' },
+            { japanese: 'tsukue', english: 'desk' },
+            { japanese: 'juusu', english: 'juice' },
+            { japanese: 'mizu', english: 'water' },
+            { japanese: 'chokoreeto', english: 'chocolate' },
+            { japanese: 'hito', english: 'person' },
+            { japanese: 'takushii', english: 'taxi' },
+            { japanese: 'denwa', english: 'telephone' },
+            { japanese: 'kamera', english: 'camera' },
+            { japanese: 'gakusei', english: 'student' },
+            { japanese: 'kami', english: 'paper' },
+            { japanese: 'basho', english: 'place' },
+            { japanese: 'daigaku', english: 'university' },
+            { japanese: 'hon', english: 'book' },
+            { japanese: 'tori', english: 'bird' },
+            { japanese: 'indo', english: 'India' },
+            { japanese: 'gakkou', english: 'school' },
+            { japanese: 'neko', english: 'cat' },
+            { japanese: 'eki', english: 'station' },
+            { japanese: 'miseru', english: 'to show' },
+            { japanese: 'kuruma', english: 'car' },
+            { japanese: 'sensei', english: 'teacher' },
+            { japanese: 'nihon', english: 'Japan' },
+            { japanese: 'furansu', english: 'France' },
+            { japanese: 'densha', english: 'train' },
+            { japanese: 'kaze', english: 'wind' },
+            { japanese: 'isu', english: 'chair' },
+            { japanese: 'tomodachi', english: 'friend' },
+            { japanese: 'kagi', english: 'key' },
+            { japanese: 'shinbun', english: 'newspaper' },
+            { japanese: 'kutsu', english: 'shoes' },
+            { japanese: 'ikura', english: 'how much' },
+            { japanese: 'kudasai', english: 'please give' },
+            { japanese: 'terebi', english: 'television' }
+        ];
+
+        // Verb Conjugation Data
+        const verbsData = [
+            { casual: 'taberu', masu: 'tabemasu', masen: 'tabemasen', mashita: 'tabemashita', masenDeshita: 'tabemasendeshita' },
+            { casual: 'neru', masu: 'nemasu', masen: 'nemasen', mashita: 'nemashita', masenDeshita: 'nemasen deshita' },
+            { casual: 'nomu', masu: 'nomimasu', masen: 'nomimasen', mashita: 'nomimashita', masenDeshita: 'nomimasendeshita' },
+            { casual: 'iku', masu: 'ikimasu', masen: 'ikimasen', mashita: 'ikimashita', masenDeshita: 'ikimasen deshita' },
+            { casual: 'kimasu', masu: 'kimasu', masen: 'kimasen', mashita: 'kimashita', masenDeshita: 'kimasen deshita' }, // Example from doc, already masu form
+            { casual: 'yasumimasu', masu: 'yasumimasu', masen: 'yasumimasen', mashita: 'yasumimashita', masenDeshita: 'yasumimasen deshita' },
+            { casual: 'kaerimasu', masu: 'kaerimasu', masen: 'kaerimasen', mashita: 'kaerimashita', masenDeshita: 'kaerimasen deshita' },
+            { casual: 'kaimasu', masu: 'kaimasu', masen: 'kaimasen', mashita: 'kaimashita', masenDeshita: 'kaimasen deshita' },
+            { casual: 'kakimasu', masu: 'kakimasu', masen: 'kakimasen', mashita: 'kakimashita', masenDeshita: 'kakimasen deshita' },
+            { casual: 'shimasu', masu: 'shimasu', masen: 'shimasen', mashita: 'shimashita', masenDeshita: 'shimasen deshita' },
+            { casual: 'mimasu', masu: 'mimasu', masen: 'mimasen', mashita: 'mimashita', masenDeshita: 'mimasen deshita' },
+            { casual: 'wakarimasu', masu: 'wakarimasu', masen: 'wakarimasen', mashita: 'wakarimashita', masenDeshita: 'wakarimasen deshita' }
+        ].map(v => ({ ...v, casual: v.casual.replace('masu', '') })); // Normalize casual form for verbs ending in masu
+
+        // Existence Data
+        const existenceExercises = [
+            { sentence: 'There is a university => daigaku ga ____', correct: 'arimasu', type: 'non-living' },
+            { sentence: 'There was no flower => hana ga ____', correct: 'arimasen deshita', type: 'non-living' },
+            { sentence: 'There was a shop => mise ga ____', correct: 'arimashita', type: 'non-living' },
+            { sentence: 'There is a cat => neko ga ____', correct: 'imasu', type: 'living' },
+            { sentence: 'There was no dog => inu ga ____', correct: 'imasen deshita', type: 'living' },
+            { sentence: 'There is no Kimura => Kimura san ga ____', correct: 'imasen', type: 'living' }
+        ];
+
+        // Demonstratives Data
+        const demonstrativesExercises = [
+            { sentence: '____ wa kagi desu. (This is key)', correct: 'Kore' },
+            { sentence: '____ wa kaban desu. (It is a bag)', correct: 'Sore' },
+            { sentence: '____ hito wa Miira desu. (This person is Meera)', correct: 'Kono' },
+            { sentence: '____ hito wa Ken desu. (That person is Ken)', correct: 'Ano' },
+            { sentence: '____ nooto wa dare no desu ka? (Whose notebook is that?)', correct: 'Ano' },
+            { sentence: '____ kasa wa Rei san no desu. (This umbrella belongs to Ms. Rei)', correct: 'Kono' }
+        ];
+
+        // Kanji Numbers Data
+        const kanjiNumbersExercises = [
+            { number: 2007, japanese: 'ni sen nana' },
+            { number: 145, japanese: 'hyaku yon juu go' },
+            { number: 65, japanese: 'roku juu go' },
+            { number: 99, japanese: 'kyuu juu kyuu' },
+            { number: 25, japanese: 'ni juu go' },
+            { number: 160, japanese: 'hyaku roku juu' },
+            { number: 1286, japanese: 'sen ni hyaku hachi juu roku' },
+            { number: 2006, japanese: 'ni sen roku' }
+        ];
+
+        // Monthly Days Data
+        const monthlyDaysData = [
+            { date: '1st', romaji: 'tsuitachi' }, { date: '2nd', romaji: 'futsuka' }, { date: '3rd', romaji: 'mikka' },
+            { date: '4th', romaji: 'yokka' }, { date: '5th', romaji: 'itsuka' }, { date: '6th', romaji: 'muika' },
+            { date: '7th', romaji: 'nanoka' }, { date: '8th', romaji: 'youka' }, { date: '9th', romaji: 'kokonoka' },
+            { date: '10th', romaji: 'tooka' }, { date: '11th', romaji: 'juuichinichi' }, { date: '12th', romaji: 'juuninichi' },
+            { date: '13th', romaji: 'juusannichi' }, { date: '14th', romaji: 'juuyokka' }, { date: '15th', romaji: 'juugonichi' },
+            { date: '16th', romaji: 'juurokunichi' }, { date: '17th', romaji: 'juushichinichi' }, { date: '18th', romaji: 'juuhachinichi' },
+            { date: '19th', romaji: 'juukunichi' }, { date: '20th', romaji: 'hatsuka' }, { date: '21st', romaji: 'nijuuichinichi' },
+            { date: '22nd', romaji: 'nijuuninichi' }, { date: '23rd', romaji: 'nijuusannichi' }, { date: '24th', romaji: 'nijuuyokka' },
+            { date: '25th', romaji: 'nijuugonichi' }, { date: '26th', romaji: 'nijuurokunichi' }, { date: '27th', romaji: 'nijuushichinichi' },
+            { date: '28th', romaji: 'nijuuhachinichi' }, { date: '29th', romaji: 'nijuukunichi' }, { date: '30th', romaji: 'sanjuunichi' },
+            { date: '31st', romaji: 'sanjuuichinichi' }
+        ];
+
+        // Particles Data
+        const particleExercises = [
+            { sentence: 'Kimura san ( ) sensei desu. (Mr. Kimura is also a teacher.)', correct: 'mo' },
+            { sentence: 'Yuki san ( ) gakusei desu ( )? (Is Ms. Yuki a student?)', correct: 'wa,ka' },
+            { sentence: 'Sore ( ) Manish san ( ) kaban desu. (That is Mr. Manish\'s bag.)', correct: 'wa,no' },
+            { sentence: 'Yoru ( ) hachi ji ( ) juu jihan ( ) benkyou shimasu. (In the evening, I study from 8 to 10:30.)', correct: 'ni,kara,made' },
+            { sentence: 'Suzuki san ( ) densha ( ) gakkou ( ) ikimasu. (Mr. Suzuki will go to school by train.)', correct: 'wa,de,e' }, // 'e' or 'ni' are both correct for direction
+            { sentence: 'Watashi ( ) koohii ( ) suki desu. (I like coffee.)', correct: 'wa,ga' },
+            { sentence: 'Watashi ( ) tomodachi ( ) nihon ( ) ikimashita. (I went to Japan with my friend.)', correct: 'wa,to,e' }, // 'e' or 'ni' are both correct for direction
+            { sentence: 'Shaan san wa onigiri ( ) sukidesu. (Mr. Shaan likes onigiri.)', correct: 'ga' },
+            { sentence: 'Kono saifu wa watashi ( ) desu. (This purse is mine.)', correct: 'no' },
+            { sentence: 'Tomodachi no ie ( ) ikimashita. (I went to my friend\'s house.)', correct: 'e' } // 'e' or 'ni' are both correct for direction
+        ];
+
+        // Hiragana to Romaji Data
+        const hiraganaRomajiExercises = [
+            { hiragana: 'ねこ', romaji: 'neko' },
+            { hiragana: 'いぬ', romaji: 'inu' },
+            { hiragana: 'みず', romaji: 'mizu' },
+            { hiragana: 'がっこう', romaji: 'gakkou' },
+            { hiragana: 'きょうし', romaji: 'kyoushi' },
+            { hiragana: 'でんしゃ', romaji: 'densha' },
+            { hiragana: 'りょこう', romaji: 'ryokou' },
+            { hiragana: 'りゅうがくせい', romaji: 'ryuugakusei' },
+            { hiragana: 'びょういん', romaji: 'byouin' },
+            { hiragana: 'コーヒー', romaji: 'koohii' }
+        ];
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Setup Flashcard sections
+            setupFlashcard(greetingsData, 'greeting-japanese', 'greeting-english', 'show-greeting-btn', 'next-greeting-btn');
+            setupFlashcard(adjectivesData, 'adjective-japanese', 'adjective-english', 'show-adjective-btn', 'next-adjective-btn');
+            setupFlashcard(bodyPartsData, 'bodypart-japanese', 'bodypart-english', 'show-bodypart-btn', 'next-bodypart-btn');
+            setupFlashcard(colorsData, 'color-japanese', 'color-english', 'show-color-btn', 'next-color-btn');
+            setupFlashcard(familyData, 'family-japanese', 'family-english', 'show-family-btn', 'next-family-btn');
+            setupFlashcard(dailyExpressionsData, 'expression-japanese', 'expression-english', 'show-expression-btn', 'next-expression-btn');
+            setupFlashcard(foodData, 'food-japanese', 'food-english', 'show-food-btn', 'next-food-btn');
+            setupFlashcard(vocabularyData, 'vocabulary-japanese', 'vocabulary-english', 'show-vocabulary-btn', 'next-vocabulary-btn');
+
+            // --- Verb Conjugation Logic ---
+            let currentVerbIndex = 0;
+            const shuffledVerbs = shuffleArray([...verbsData]);
+            const currentCasualVerbEl = document.getElementById('current-casual-verb');
+            const verbMasuInput = document.getElementById('verb-masu');
+            const verbMasenInput = document.getElementById('verb-masen');
+            const verbMashitaInput = document.getElementById('verb-mashita');
+            const verbMasenDeshitaInput = document.getElementById('verb-masen-deshita');
+            const conjugationFeedbackEl = document.getElementById('conjugation-feedback');
+            const checkConjugationBtn = document.getElementById('check-conjugation-btn');
+            const nextConjugationBtn = document.getElementById('next-conjugation-btn');
+            const verbListEl = document.getElementById('verb-list');
+
+            // Populate verb list
+            verbsData.forEach(verb => {
+                const li = document.createElement('li');
+                li.textContent = `${verb.casual} (To ${verb.english ? verb.english.split('To ')[1] : 'do'})`;
+                verbListEl.appendChild(li);
+            });
+
+
+            function displayConjugationExercise() {
+                const verb = shuffledVerbs[currentVerbIndex];
+                currentCasualVerbEl.textContent = verb.casual;
+                verbMasuInput.value = '';
+                verbMasenInput.value = '';
+                verbMashitaInput.value = '';
+                verbMasenDeshitaInput.value = '';
+                conjugationFeedbackEl.textContent = '';
+                conjugationFeedbackEl.classList.remove('correct', 'incorrect');
+            }
+
+            checkConjugationBtn.addEventListener('click', () => {
+                const verb = shuffledVerbs[currentVerbIndex];
+                let allCorrect = true;
+                let feedbackText = '';
+
+                if (verbMasuInput.value.toLowerCase().trim() !== verb.masu.toLowerCase()) {
+                    allCorrect = false;
+                    feedbackText += `Present (masu): Incorrect. Correct is "${verb.masu}".\n`;
+                }
+                if (verbMasenInput.value.toLowerCase().trim() !== verb.masen.toLowerCase()) {
+                    allCorrect = false;
+                    feedbackText += `Present Negative (masen): Incorrect. Correct is "${verb.masen}".\n`;
+                }
+                if (verbMashitaInput.value.toLowerCase().trim() !== verb.mashita.toLowerCase()) {
+                    allCorrect = false;
+                    feedbackText += `Past (mashita): Incorrect. Correct is "${verb.mashita}".\n`;
+                }
+                if (verbMasenDeshitaInput.value.toLowerCase().trim() !== verb.masenDeshita.toLowerCase()) {
+                    allCorrect = false;
+                    feedbackText += `Past Negative (masen deshita): Incorrect. Correct is "${verb.masenDeshita}".\n`;
+                }
+
+                if (allCorrect) {
+                    conjugationFeedbackEl.textContent = 'All correct!';
+                    conjugationFeedbackEl.classList.remove('incorrect');
+                    conjugationFeedbackEl.classList.add('correct');
+                } else {
+                    conjugationFeedbackEl.textContent = feedbackText || 'Some answers are incorrect.';
+                    conjugationFeedbackEl.classList.remove('correct');
+                    conjugationFeedbackEl.classList.add('incorrect');
+                }
+            });
+
+            nextConjugationBtn.addEventListener('click', () => {
+                currentVerbIndex = (currentVerbIndex + 1) % shuffledVerbs.length;
+                displayConjugationExercise();
+            });
+
+            displayConjugationExercise(); // Initial display
+
+            // --- Existence Logic ---
+            let currentExistenceIndex = 0;
+            const shuffledExistence = shuffleArray([...existenceExercises]);
+            const existenceSentenceEl = document.getElementById('existence-sentence');
+            const existenceAnswerEl = document.getElementById('existence-answer');
+            const existenceFeedbackEl = document.getElementById('existence-feedback');
+            const checkExistenceBtn = document.getElementById('check-existence-btn');
+            const nextExistenceBtn = document.getElementById('next-existence-btn');
+
+            function displayExistenceExercise() {
+                const exercise = shuffledExistence[currentExistenceIndex];
+                existenceSentenceEl.textContent = exercise.sentence;
+                existenceAnswerEl.value = '';
+                existenceFeedbackEl.textContent = '';
+                existenceFeedbackEl.classList.remove('correct', 'incorrect');
+            }
+
+            checkExistenceBtn.addEventListener('click', () => {
+                const exercise = shuffledExistence[currentExistenceIndex];
+                if (existenceAnswerEl.value.toLowerCase().trim() === exercise.correct.toLowerCase()) {
+                    existenceFeedbackEl.textContent = 'Correct!';
+                    existenceFeedbackEl.classList.remove('incorrect');
+                    existenceFeedbackEl.classList.add('correct');
+                } else {
+                    existenceFeedbackEl.textContent = `Incorrect. Correct is "${exercise.correct}".`;
+                    existenceFeedbackEl.classList.remove('correct');
+                    existenceFeedbackEl.classList.add('incorrect');
+                }
+            });
+
+            nextExistenceBtn.addEventListener('click', () => {
+                currentExistenceIndex = (currentExistenceIndex + 1) % shuffledExistence.length;
+                displayExistenceExercise();
+            });
+
+            displayExistenceExercise(); // Initial display
+
+            // --- Demonstratives Logic ---
+            let currentDemonstrativeIndex = 0;
+            const shuffledDemonstratives = shuffleArray([...demonstrativesExercises]);
+            const demonstrativeSentenceEl = document.getElementById('demonstrative-sentence');
+            const demonstrativeInput = document.getElementById('demonstrative-input');
+            const demonstrativeFeedbackEl = document.getElementById('demonstrative-feedback');
+            const checkDemonstrativeBtn = document.getElementById('check-demonstrative-btn');
+            const nextDemonstrativeBtn = document.getElementById('next-demonstrative-btn');
+
+            function displayDemonstrativeExercise() {
+                const exercise = shuffledDemonstratives[currentDemonstrativeIndex];
+                demonstrativeSentenceEl.textContent = exercise.sentence;
+                demonstrativeInput.value = '';
+                demonstrativeFeedbackEl.textContent = '';
+                demonstrativeFeedbackEl.classList.remove('correct', 'incorrect');
+            }
+
+            checkDemonstrativeBtn.addEventListener('click', () => {
+                const exercise = shuffledDemonstratives[currentDemonstrativeIndex];
+                if (demonstrativeInput.value.toLowerCase().trim() === exercise.correct.toLowerCase()) {
+                    demonstrativeFeedbackEl.textContent = 'Correct!';
+                    demonstrativeFeedbackEl.classList.remove('incorrect');
+                    demonstrativeFeedbackEl.classList.add('correct');
+                } else {
+                    demonstrativeFeedbackEl.textContent = `Incorrect. Correct is "${exercise.correct}".`;
+                    demonstrativeFeedbackEl.classList.remove('correct');
+                    demonstrativeFeedbackEl.classList.add('incorrect');
+                }
+            });
+
+            nextDemonstrativeBtn.addEventListener('click', () => {
+                currentDemonstrativeIndex = (currentDemonstrativeIndex + 1) % shuffledDemonstratives.length;
+                displayDemonstrativeExercise();
+            });
+
+            displayDemonstrativeExercise(); // Initial display
+
+            // --- Kanji Numbers Logic ---
+            let currentKanjiNumberIndex = 0;
+            const shuffledKanjiNumbers = shuffleArray([...kanjiNumbersExercises]);
+            const numberToConvertEl = document.getElementById('number-to-convert');
+            const kanjiNumberInput = document.getElementById('kanji-number-input');
+            const kanjiNumberFeedbackEl = document.getElementById('kanji-number-feedback');
+            const checkKanjiNumberBtn = document.getElementById('check-kanji-number-btn');
+            const nextKanjiNumberBtn = document.getElementById('next-kanji-number-btn');
+
+            function displayKanjiNumberExercise() {
+                const exercise = shuffledKanjiNumbers[currentKanjiNumberIndex];
+                numberToConvertEl.textContent = exercise.number;
+                kanjiNumberInput.value = '';
+                kanjiNumberFeedbackEl.textContent = '';
+                kanjiNumberFeedbackEl.classList.remove('correct', 'incorrect');
+            }
+
+            checkKanjiNumberBtn.addEventListener('click', () => {
+                const exercise = shuffledKanjiNumbers[currentKanjiNumberIndex];
+                if (kanjiNumberInput.value.toLowerCase().trim() === exercise.japanese.toLowerCase()) {
+                    kanjiNumberFeedbackEl.textContent = 'Correct!';
+                    kanjiNumberFeedbackEl.classList.remove('incorrect');
+                    kanjiNumberFeedbackEl.classList.add('correct');
+                } else {
+                    kanjiNumberFeedbackEl.textContent = `Incorrect. Correct is "${exercise.japanese}".`;
+                    kanjiNumberFeedbackEl.classList.remove('correct');
+                    kanjiNumberFeedbackEl.classList.add('incorrect');
+                }
+            });
+
+            nextKanjiNumberBtn.addEventListener('click', () => {
+                currentKanjiNumberIndex = (currentKanjiNumberIndex + 1) % shuffledKanjiNumbers.length;
+                displayKanjiNumberExercise();
+            });
+
+            displayKanjiNumberExercise(); // Initial display
+
+            // --- Monthly Days Table Population ---
+            const monthlyDaysTableBody = document.getElementById('monthly-days-table-body');
+            monthlyDaysData.forEach(day => {
+                const row = document.createElement('tr');
+                row.classList.add('hover:bg-gray-50');
+                row.innerHTML = `
+                    <td class="py-2 px-4 border-b">${day.date}</td>
+                    <td class="py-2 px-4 border-b">${day.romaji}</td>
+                `;
+                monthlyDaysTableBody.appendChild(row);
+            });
+
+            // --- Particles Logic ---
+            let currentParticleIndex = 0;
+            const shuffledParticles = shuffleArray([...particleExercises]);
+            const particleSentenceEl = document.getElementById('particle-sentence');
+            const particleInput = document.getElementById('particle-input');
+            const particleFeedbackEl = document.getElementById('particle-feedback');
+            const checkParticleBtn = document.getElementById('check-particle-btn');
+            const nextParticleBtn = document.getElementById('next-particle-btn');
+
+            function displayParticleExercise() {
+                const exercise = shuffledParticles[currentParticleIndex];
+                particleSentenceEl.textContent = exercise.sentence;
+                particleInput.value = '';
+                particleFeedbackEl.textContent = '';
+                particleFeedbackEl.classList.remove('correct', 'incorrect');
+            }
+
+            checkParticleBtn.addEventListener('click', () => {
+                const exercise = shuffledParticles[currentParticleIndex];
+                const userAnswers = particleInput.value.toLowerCase().trim().split(',').map(s => s.trim());
+                const correctAnswers = exercise.correct.toLowerCase().split(',').map(s => s.trim());
+
+                let isCorrect = true;
+                if (userAnswers.length !== correctAnswers.length) {
+                    isCorrect = false;
+                } else {
+                    for (let i = 0; i < correctAnswers.length; i++) {
+                        // Allow for 'e' or 'ni' as correct for certain direction particles
+                        if ((correctAnswers[i] === 'e' || correctAnswers[i] === 'ni') && (userAnswers[i] === 'e' || userAnswers[i] === 'ni')) {
+                            continue;
+                        }
+                        if (userAnswers[i] !== correctAnswers[i]) {
+                            isCorrect = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (isCorrect) {
+                    particleFeedbackEl.textContent = 'Correct!';
+                    particleFeedbackEl.classList.remove('incorrect');
+                    particleFeedbackEl.classList.add('correct');
+                } else {
+                    particleFeedbackEl.textContent = `Incorrect. Correct is "${exercise.correct}".`;
+                    particleFeedbackEl.classList.remove('correct');
+                    particleFeedbackEl.classList.add('incorrect');
+                }
+            });
+
+            nextParticleBtn.addEventListener('click', () => {
+                currentParticleIndex = (currentParticleIndex + 1) % shuffledParticles.length;
+                displayParticleExercise();
+            });
+
+            displayParticleExercise(); // Initial display
+
+            // --- Hiragana to Romaji Logic ---
+            let currentHiraganaIndex = 0;
+            const shuffledHiragana = shuffleArray([...hiraganaRomajiExercises]);
+            const hiraganaWordEl = document.getElementById('hiragana-word');
+            const romajiInput = document.getElementById('romaji-input');
+            const romajiFeedbackEl = document.getElementById('romaji-feedback');
+            const checkRomajiBtn = document.getElementById('check-romaji-btn');
+            const nextRomajiBtn = document.getElementById('next-romaji-btn');
+
+            function displayHiraganaExercise() {
+                const exercise = shuffledHiragana[currentHiraganaIndex];
+                hiraganaWordEl.textContent = exercise.hiragana;
+                romajiInput.value = '';
+                romajiFeedbackEl.textContent = '';
+                romajiFeedbackEl.classList.remove('correct', 'incorrect');
+            }
+
+            checkRomajiBtn.addEventListener('click', () => {
+                const exercise = shuffledHiragana[currentHiraganaIndex];
+                if (romajiInput.value.toLowerCase().trim() === exercise.romaji.toLowerCase()) {
+                    romajiFeedbackEl.textContent = 'Correct!';
+                    romajiFeedbackEl.classList.remove('incorrect');
+                    romajiFeedbackEl.classList.add('correct');
+                } else {
+                    romajiFeedbackEl.textContent = `Incorrect. Correct is "${exercise.romaji}".`;
+                    romajiFeedbackEl.classList.remove('correct');
+                    romajiFeedbackEl.classList.add('incorrect');
+                }
+            });
+
+            nextRomajiBtn.addEventListener('click', () => {
+                currentHiraganaIndex = (currentHiraganaIndex + 1) % shuffledHiragana.length;
+                displayHiraganaExercise();
+            });
+
+            displayHiraganaExercise(); // Initial display
+        });
+    </script>
+</body>
+</html>
