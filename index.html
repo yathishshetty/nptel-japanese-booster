@@ -131,12 +131,11 @@
         <section id="greetings" class="card">
             <h2 class="subsection-title">1. Japanese Greetings</h2>
             <div class="flex flex-col items-center">
-                <p id="greeting-japanese" class="text-3xl font-bold text-blue-800 mb-4"></p>
-                <p id="greeting-english" class="text-xl text-gray-700 mb-4 hidden"></p>
-                <div class="flex gap-4">
-                    <button id="show-greeting-btn" class="btn btn-secondary">Show English</button>
-                    <button id="next-greeting-btn" class="btn btn-primary">Next Greeting</button>
-                </div>
+                <p id="greeting-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                <input type="text" id="greeting-answer" class="input-field mb-4" placeholder="Type English here">
+                <button id="check-greeting-btn" class="btn btn-primary">Check Answer</button>
+                <div id="greeting-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                <button id="next-greeting-btn" class="btn btn-secondary mt-4">Next Greeting</button>
             </div>
         </section>
 
@@ -144,12 +143,11 @@
         <section id="adjectives" class="card">
             <h2 class="subsection-title">2. na & 3. i Adjectives</h2>
             <div class="flex flex-col items-center">
-                <p id="adjective-japanese" class="text-3xl font-bold text-blue-800 mb-4"></p>
-                <p id="adjective-english" class="text-xl text-gray-700 mb-4 hidden"></p>
-                <div class="flex gap-4">
-                    <button id="show-adjective-btn" class="btn btn-secondary">Show English</button>
-                    <button id="next-adjective-btn" class="btn btn-primary">Next Adjective</button>
-                </div>
+                <p id="adjective-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                <input type="text" id="adjective-answer" class="input-field mb-4" placeholder="Type English here">
+                <button id="check-adjective-btn" class="btn btn-primary">Check Answer</button>
+                <div id="adjective-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                <button id="next-adjective-btn" class="btn btn-secondary mt-4">Next Adjective</button>
             </div>
         </section>
 
@@ -157,12 +155,11 @@
         <section id="body-parts" class="card">
             <h2 class="subsection-title">4. Body Parts</h2>
             <div class="flex flex-col items-center">
-                <p id="bodypart-japanese" class="text-3xl font-bold text-blue-800 mb-4"></p>
-                <p id="bodypart-english" class="text-xl text-gray-700 mb-4 hidden"></p>
-                <div class="flex gap-4">
-                    <button id="show-bodypart-btn" class="btn btn-secondary">Show English</button>
-                    <button id="next-bodypart-btn" class="btn btn-primary">Next Body Part</button>
-                </div>
+                <p id="bodypart-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                <input type="text" id="bodypart-answer" class="input-field mb-4" placeholder="Type English here">
+                <button id="check-bodypart-btn" class="btn btn-primary">Check Answer</button>
+                <div id="bodypart-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                <button id="next-bodypart-btn" class="btn btn-secondary mt-4">Next Body Part</button>
             </div>
         </section>
 
@@ -227,12 +224,11 @@
         <section id="colors" class="card">
             <h2 class="subsection-title">8. Colors in Japanese</h2>
             <div class="flex flex-col items-center">
-                <p id="color-japanese" class="text-3xl font-bold text-blue-800 mb-4"></p>
-                <p id="color-english" class="text-xl text-gray-700 mb-4 hidden"></p>
-                <div class="flex gap-4">
-                    <button id="show-color-btn" class="btn btn-secondary">Show English</button>
-                    <button id="next-color-btn" class="btn btn-primary">Next Color</button>
-                </div>
+                <p id="color-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                <input type="text" id="color-answer" class="input-field mb-4" placeholder="Type English here">
+                <button id="check-color-btn" class="btn btn-primary">Check Answer</button>
+                <div id="color-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                <button id="next-color-btn" class="btn btn-secondary mt-4">Next Color</button>
             </div>
         </section>
 
@@ -240,12 +236,11 @@
         <section id="family" class="card">
             <h2 class="subsection-title">9. Family Members</h2>
             <div class="flex flex-col items-center">
-                <p id="family-japanese" class="text-3xl font-bold text-blue-800 mb-4"></p>
-                <p id="family-english" class="text-xl text-gray-700 mb-4 hidden"></p>
-                <div class="flex gap-4">
-                    <button id="show-family-btn" class="btn btn-secondary">Show English</button>
-                    <button id="next-family-btn" class="btn btn-primary">Next Member</button>
-                </div>
+                <p id="family-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                <input type="text" id="family-answer" class="input-field mb-4" placeholder="Type English here">
+                <button id="check-family-btn" class="btn btn-primary">Check Answer</button>
+                <div id="family-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                <button id="next-family-btn" class="btn btn-secondary mt-4">Next Member</button>
             </div>
         </section>
 
@@ -253,12 +248,11 @@
         <section id="daily-expressions" class="card">
             <h2 class="subsection-title">10. Daily Expressions</h2>
             <div class="flex flex-col items-center">
-                <p id="expression-japanese" class="text-3xl font-bold text-blue-800 mb-4"></p>
-                <p id="expression-english" class="text-xl text-gray-700 mb-4 hidden"></p>
-                <div class="flex gap-4">
-                    <button id="show-expression-btn" class="btn btn-secondary">Show English</button>
-                    <button id="next-expression-btn" class="btn btn-primary">Next Expression</button>
-                </div>
+                <p id="expression-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                <input type="text" id="expression-answer" class="input-field mb-4" placeholder="Type English here">
+                <button id="check-expression-btn" class="btn btn-primary">Check Answer</button>
+                <div id="expression-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                <button id="next-expression-btn" class="btn btn-secondary mt-4">Next Expression</button>
             </div>
         </section>
 
@@ -277,7 +271,7 @@
         <!-- Self-Introduction Section -->
         <section id="self-introduction" class="card">
             <h2 class="subsection-title">12. Introduce yourself in Japanese</h2>
-            <div class="text-lg text-gray-700 leading-relaxed">
+            <div class="text-lg text-gray-700 leading-relaxed mb-4">
                 <p><strong>Hajimemashite</strong> (How do you do)</p>
                 <p><strong>Watashi no namae wa [Your Name] desu.</strong> (My name is [Your Name])</p>
                 <p><strong>Mangaruuru kara kimashita.</strong> (I am from Mangalore)</p>
@@ -291,6 +285,8 @@
                     *Replace [Your Name] and [Your Major] with your actual information.*
                 </p>
             </div>
+            <h3 class="text-xl font-semibold text-gray-700 mb-4">Practice Your Self-Introduction:</h3>
+            <textarea id="self-intro-practice" class="input-field w-full max-w-none h-32" placeholder="Type your self-introduction here..."></textarea>
         </section>
 
         <!-- Kanji Numbers Section -->
@@ -339,6 +335,15 @@
                     <li>日曜日 (nichiyoubi) - Sunday</li>
                 </ul>
             </div>
+            <h3 class="text-xl font-semibold text-gray-700 mb-4">Weekly Day Exercise:</h3>
+            <div class="flex flex-col items-center mb-6">
+                <p id="weekly-day-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                <input type="text" id="weekly-day-answer" class="input-field mb-4" placeholder="Type English here">
+                <button id="check-weekly-day-btn" class="btn btn-primary">Check Answer</button>
+                <div id="weekly-day-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                <button id="next-weekly-day-btn" class="btn btn-secondary mt-4">Next Day</button>
+            </div>
+
             <div>
                 <h3 class="text-xl font-semibold text-gray-700 mb-2">Monthly Days:</h3>
                 <div class="overflow-x-auto">
@@ -355,18 +360,25 @@
                     </table>
                 </div>
             </div>
+            <h3 class="text-xl font-semibold text-gray-700 mt-6 mb-4">Date Conversion Exercise:</h3>
+            <div class="flex flex-col items-center">
+                <p id="date-conversion-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                <input type="text" id="date-conversion-answer" class="input-field mb-4" placeholder="Type Japanese (Romaji) here">
+                <button id="check-date-conversion-btn" class="btn btn-primary">Check Answer</button>
+                <div id="date-conversion-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                <button id="next-date-conversion-btn" class="btn btn-secondary mt-4">Next Date</button>
+            </div>
         </section>
 
         <!-- Food Items Section -->
         <section id="food" class="card">
             <h2 class="subsection-title">16. Food Items</h2>
             <div class="flex flex-col items-center">
-                <p id="food-japanese" class="text-3xl font-bold text-blue-800 mb-4"></p>
-                <p id="food-english" class="text-xl text-gray-700 mb-4 hidden"></p>
-                <div class="flex gap-4">
-                    <button id="show-food-btn" class="btn btn-secondary">Show English</button>
-                    <button id="next-food-btn" class="btn btn-primary">Next Food Item</button>
-                </div>
+                <p id="food-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                <input type="text" id="food-answer" class="input-field mb-4" placeholder="Type English here">
+                <button id="check-food-btn" class="btn btn-primary">Check Answer</button>
+                <div id="food-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                <button id="next-food-btn" class="btn btn-secondary mt-4">Next Food Item</button>
             </div>
         </section>
 
@@ -374,18 +386,17 @@
         <section id="vocabulary" class="card">
             <h2 class="subsection-title">17. Vocabulary</h2>
             <div class="flex flex-col items-center">
-                <p id="vocabulary-japanese" class="text-3xl font-bold text-blue-800 mb-4"></p>
-                <p id="vocabulary-english" class="text-xl text-gray-700 mb-4 hidden"></p>
-                <div class="flex gap-4">
-                    <button id="show-vocabulary-btn" class="btn btn-secondary">Show English</button>
-                    <button id="next-vocabulary-btn" class="btn btn-primary">Next Word</button>
-                </div>
+                <p id="vocabulary-question" class="text-3xl font-bold text-blue-800 mb-4"></p>
+                <input type="text" id="vocabulary-answer" class="input-field mb-4" placeholder="Type English here">
+                <button id="check-vocabulary-btn" class="btn btn-primary">Check Answer</button>
+                <div id="vocabulary-feedback" class="feedback mt-4 w-full max-w-lg"></div>
+                <button id="next-vocabulary-btn" class="btn btn-secondary mt-4">Next Word</button>
             </div>
         </section>
 
         <!-- Particles Section -->
         <section id="particles" class="card">
-            <h2 class="subsection-title">18. Particle Explanation with Examples</h2>
+            <h2 class="subsection-title">18. Particle Explanation with Examples.</h2>
             <div class="mb-6">
                 <h3 class="text-xl font-semibold text-gray-700 mb-2">Particle Explanations:</h3>
                 <ul class="list-disc list-inside text-gray-700">
@@ -468,34 +479,101 @@
             return array;
         }
 
-        // Generic Flashcard/Reveal Logic
-        function setupFlashcard(data, japaneseElId, englishElId, showBtnId, nextBtnId) {
+        // Generic Quiz Logic
+        function setupQuiz(data, questionElId, answerInputId, feedbackElId, checkBtnId, nextBtnId, questionType = 'japanese-to-english') {
             let currentIndex = 0;
             let shuffledData = shuffleArray([...data]);
 
-            const japaneseEl = document.getElementById(japaneseElId);
-            const englishEl = document.getElementById(englishElId);
-            const showBtn = document.getElementById(showBtnId);
+            const questionEl = document.getElementById(questionElId);
+            const answerInput = document.getElementById(answerInputId);
+            const feedbackEl = document.getElementById(feedbackElId);
+            const checkBtn = document.getElementById(checkBtnId);
             const nextBtn = document.getElementById(nextBtnId);
 
-            function displayCard() {
-                japaneseEl.textContent = shuffledData[currentIndex].japanese;
-                englishEl.textContent = shuffledData[currentIndex].english;
-                englishEl.classList.add('hidden');
-                showBtn.textContent = 'Show English';
+            function displayQuestion() {
+                const item = shuffledData[currentIndex];
+                if (questionType === 'japanese-to-english') {
+                    questionEl.textContent = item.japanese;
+                    answerInput.placeholder = 'Type English here';
+                } else if (questionType === 'english-to-japanese') {
+                    questionEl.textContent = item.english;
+                    answerInput.placeholder = 'Type Japanese (Romaji) here';
+                } else if (questionType === 'number-to-japanese') {
+                    questionEl.textContent = item.number;
+                    answerInput.placeholder = 'Type Japanese (Romaji) here';
+                } else if (questionType === 'hiragana-to-romaji') {
+                    questionEl.textContent = item.hiragana;
+                    answerInput.placeholder = 'Type Romaji here';
+                } else if (questionType === 'date-to-japanese') {
+                    questionEl.textContent = item.question;
+                    answerInput.placeholder = 'Type Japanese (Romaji) here';
+                } else if (questionType === 'fill-in-the-blank') {
+                    questionEl.textContent = item.sentence;
+                    answerInput.placeholder = 'Type the particle(s) (comma-separated)';
+                }
+
+
+                answerInput.value = '';
+                feedbackEl.textContent = '';
+                feedbackEl.classList.remove('correct', 'incorrect');
             }
 
-            showBtn.addEventListener('click', () => {
-                englishEl.classList.toggle('hidden');
-                showBtn.textContent = englishEl.classList.contains('hidden') ? 'Show English' : 'Hide English';
+            checkBtn.addEventListener('click', () => {
+                const item = shuffledData[currentIndex];
+                const userAnswer = answerInput.value.toLowerCase().trim();
+                let correctAnswer;
+
+                if (questionType === 'japanese-to-english') {
+                    correctAnswer = item.english.toLowerCase().trim();
+                } else if (questionType === 'english-to-japanese' || questionType === 'number-to-japanese' || questionType === 'hiragana-to-romaji' || questionType === 'date-to-japanese') {
+                    correctAnswer = item.japanese.toLowerCase().trim();
+                } else if (questionType === 'fill-in-the-blank') {
+                    const userAnswers = userAnswer.split(',').map(s => s.trim());
+                    const correctAnswers = item.correct.toLowerCase().split(',').map(s => s.trim());
+
+                    let isCorrect = true;
+                    if (userAnswers.length !== correctAnswers.length) {
+                        isCorrect = false;
+                    } else {
+                        for (let i = 0; i < correctAnswers.length; i++) {
+                            if ((correctAnswers[i] === 'e' || correctAnswers[i] === 'ni') && (userAnswers[i] === 'e' || userAnswers[i] === 'ni')) {
+                                continue; // Allow 'e' or 'ni' for direction particles
+                            }
+                            if (userAnswers[i] !== correctAnswers[i]) {
+                                isCorrect = false;
+                                break;
+                            }
+                        }
+                    }
+                    if (isCorrect) {
+                        feedbackEl.textContent = 'Correct!';
+                        feedbackEl.classList.remove('incorrect');
+                        feedbackEl.classList.add('correct');
+                    } else {
+                        feedbackEl.textContent = `Incorrect. Correct is "${item.correct}".`;
+                        feedbackEl.classList.remove('correct');
+                        feedbackEl.classList.add('incorrect');
+                    }
+                    return; // Skip generic feedback for fill-in-the-blank
+                }
+
+                if (userAnswer === correctAnswer) {
+                    feedbackEl.textContent = 'Correct!';
+                    feedbackEl.classList.remove('incorrect');
+                    feedbackEl.classList.add('correct');
+                } else {
+                    feedbackEl.textContent = `Incorrect. Correct is "${correctAnswer}".`;
+                    feedbackEl.classList.remove('correct');
+                    feedbackEl.classList.add('incorrect');
+                }
             });
 
             nextBtn.addEventListener('click', () => {
                 currentIndex = (currentIndex + 1) % shuffledData.length;
-                displayCard();
+                displayQuestion();
             });
 
-            displayCard(); // Initial display
+            displayQuestion(); // Initial display
         }
 
         // Data for sections
@@ -656,19 +734,19 @@
 
         // Verb Conjugation Data
         const verbsData = [
-            { casual: 'taberu', masu: 'tabemasu', masen: 'tabemasen', mashita: 'tabemashita', masenDeshita: 'tabemasendeshita' },
-            { casual: 'neru', masu: 'nemasu', masen: 'nemasen', mashita: 'nemashita', masenDeshita: 'nemasen deshita' },
-            { casual: 'nomu', masu: 'nomimasu', masen: 'nomimasen', mashita: 'nomimashita', masenDeshita: 'nomimasendeshita' },
-            { casual: 'iku', masu: 'ikimasu', masen: 'ikimasen', mashita: 'ikimashita', masenDeshita: 'ikimasen deshita' },
-            { casual: 'kimasu', masu: 'kimasu', masen: 'kimasen', mashita: 'kimashita', masenDeshita: 'kimasen deshita' }, // Example from doc, already masu form
-            { casual: 'yasumimasu', masu: 'yasumimasu', masen: 'yasumimasen', mashita: 'yasumimashita', masenDeshita: 'yasumimasen deshita' },
-            { casual: 'kaerimasu', masu: 'kaerimasu', masen: 'kaerimasen', mashita: 'kaerimashita', masenDeshita: 'kaerimasen deshita' },
-            { casual: 'kaimasu', masu: 'kaimasu', masen: 'kaimasen', mashita: 'kaimashita', masenDeshita: 'kaimasen deshita' },
-            { casual: 'kakimasu', masu: 'kakimasu', masen: 'kakimasen', mashita: 'kakimashita', masenDeshita: 'kakimasen deshita' },
-            { casual: 'shimasu', masu: 'shimasu', masen: 'shimasen', mashita: 'shimashita', masenDeshita: 'shimasen deshita' },
-            { casual: 'mimasu', masu: 'mimasu', masen: 'mimasen', mashita: 'mimashita', masenDeshita: 'mimasen deshita' },
-            { casual: 'wakarimasu', masu: 'wakarimasu', masen: 'wakarimasen', mashita: 'wakarimashita', masenDeshita: 'wakarimasen deshita' }
-        ].map(v => ({ ...v, casual: v.casual.replace('masu', '') })); // Normalize casual form for verbs ending in masu
+            { casual: 'taberu', english: 'eat', masu: 'tabemasu', masen: 'tabemasen', mashita: 'tabemashita', masenDeshita: 'tabemasendeshita' },
+            { casual: 'neru', english: 'sleep', masu: 'nemasu', masen: 'nemasen', mashita: 'nemashita', masenDeshita: 'nemasen deshita' },
+            { casual: 'nomu', english: 'drink', masu: 'nomimasu', masen: 'nomimasen', mashita: 'nomimashita', masenDeshita: 'nomimasendeshita' },
+            { casual: 'iku', english: 'go', masu: 'ikimasu', masen: 'ikimasen', mashita: 'ikimashita', masenDeshita: 'ikimasen deshita' },
+            { casual: 'kimasu', english: 'come', masu: 'kimasu', masen: 'kimasen', mashita: 'kimashita', masenDeshita: 'kimasen deshita' },
+            { casual: 'yasumimasu', english: 'take rest', masu: 'yasumimasu', masen: 'yasumimasen', mashita: 'yasumimashita', masenDeshita: 'yasumimasen deshita' },
+            { casual: 'kaerimasu', english: 'return', masu: 'kaerimasu', masen: 'kaerimasen', mashita: 'kaerimashita', masenDeshita: 'kaerimasen deshita' },
+            { casual: 'kaimasu', english: 'buy', masu: 'kaimasu', masen: 'kaimasen', mashita: 'kaimashita', masenDeshita: 'kaimasen deshita' },
+            { casual: 'kakimasu', english: 'write', masu: 'kakimasu', masen: 'kakimasen', mashita: 'kakimashita', masenDeshita: 'kakimasen deshita' },
+            { casual: 'shimasu', english: 'do', masu: 'shimasu', masen: 'shimasen', mashita: 'shimashita', masenDeshita: 'shimasen deshita' },
+            { casual: 'mimasu', english: 'see', masu: 'mimasu', masen: 'mimasen', mashita: 'mimashita', masenDeshita: 'mimasen deshita' },
+            { casual: 'wakarimasu', english: 'understand', masu: 'wakarimasu', masen: 'wakarimasen', mashita: 'wakarimashita', masenDeshita: 'wakarimasen deshita' }
+        ].map(v => ({ ...v, casual: v.casual.endsWith('masu') ? v.casual.slice(0, -4) : v.casual })); // Normalize casual form for verbs ending in masu
 
         // Existence Data
         const existenceExercises = [
@@ -702,7 +780,18 @@
             { number: 2006, japanese: 'ni sen roku' }
         ];
 
-        // Monthly Days Data
+        // Weekly Days Data (for quiz)
+        const weeklyDaysData = [
+            { japanese: '月曜日', english: 'Monday' },
+            { japanese: '火曜日', english: 'Tuesday' },
+            { japanese: '水曜日', english: 'Wednesday' },
+            { japanese: '木曜日', english: 'Thursday' },
+            { japanese: '金曜日', english: 'Friday' },
+            { japanese: '土曜日', english: 'Saturday' },
+            { japanese: '日曜日', english: 'Sunday' }
+        ];
+
+        // Monthly Days Data (for table)
         const monthlyDaysData = [
             { date: '1st', romaji: 'tsuitachi' }, { date: '2nd', romaji: 'futsuka' }, { date: '3rd', romaji: 'mikka' },
             { date: '4th', romaji: 'yokka' }, { date: '5th', romaji: 'itsuka' }, { date: '6th', romaji: 'muika' },
@@ -715,6 +804,14 @@
             { date: '25th', romaji: 'nijuugonichi' }, { date: '26th', romaji: 'nijuurokunichi' }, { date: '27th', romaji: 'nijuushichinichi' },
             { date: '28th', romaji: 'nijuuhachinichi' }, { date: '29th', romaji: 'nijuukunichi' }, { date: '30th', romaji: 'sanjuunichi' },
             { date: '31st', romaji: 'sanjuuichinichi' }
+        ];
+
+        // Date Conversion Data (for quiz)
+        const dateConversionExercises = [
+            { question: '2007-09-14', japanese: 'ni sen nana nen - ku gatsu - juuyokka' },
+            { question: '2006-10-01', japanese: 'ni sen roku nen - juu gatsu - tsuitachi' },
+            { question: '2007-02-04', japanese: 'ni sen nana nen - ni gatsu - yokka' },
+            { question: '2025-06-18', japanese: 'ni sen ni juu go nen - roku gatsu - juuhachinichi' }
         ];
 
         // Particles Data
@@ -747,15 +844,15 @@
 
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Setup Flashcard sections
-            setupFlashcard(greetingsData, 'greeting-japanese', 'greeting-english', 'show-greeting-btn', 'next-greeting-btn');
-            setupFlashcard(adjectivesData, 'adjective-japanese', 'adjective-english', 'show-adjective-btn', 'next-adjective-btn');
-            setupFlashcard(bodyPartsData, 'bodypart-japanese', 'bodypart-english', 'show-bodypart-btn', 'next-bodypart-btn');
-            setupFlashcard(colorsData, 'color-japanese', 'color-english', 'show-color-btn', 'next-color-btn');
-            setupFlashcard(familyData, 'family-japanese', 'family-english', 'show-family-btn', 'next-family-btn');
-            setupFlashcard(dailyExpressionsData, 'expression-japanese', 'expression-english', 'show-expression-btn', 'next-expression-btn');
-            setupFlashcard(foodData, 'food-japanese', 'food-english', 'show-food-btn', 'next-food-btn');
-            setupFlashcard(vocabularyData, 'vocabulary-japanese', 'vocabulary-english', 'show-vocabulary-btn', 'next-vocabulary-btn');
+            // Setup Quiz sections (replacing old flashcards)
+            setupQuiz(greetingsData, 'greeting-question', 'greeting-answer', 'greeting-feedback', 'check-greeting-btn', 'next-greeting-btn', 'japanese-to-english');
+            setupQuiz(adjectivesData, 'adjective-question', 'adjective-answer', 'adjective-feedback', 'check-adjective-btn', 'next-adjective-btn', 'japanese-to-english');
+            setupQuiz(bodyPartsData, 'bodypart-question', 'bodypart-answer', 'bodypart-feedback', 'check-bodypart-btn', 'next-bodypart-btn', 'japanese-to-english');
+            setupQuiz(colorsData, 'color-question', 'color-answer', 'color-feedback', 'check-color-btn', 'next-color-btn', 'japanese-to-english');
+            setupQuiz(familyData, 'family-question', 'family-answer', 'family-feedback', 'check-family-btn', 'next-family-btn', 'japanese-to-english');
+            setupQuiz(dailyExpressionsData, 'expression-question', 'expression-answer', 'expression-feedback', 'check-expression-btn', 'next-expression-btn', 'japanese-to-english');
+            setupQuiz(foodData, 'food-question', 'food-answer', 'food-feedback', 'check-food-btn', 'next-food-btn', 'japanese-to-english');
+            setupQuiz(vocabularyData, 'vocabulary-question', 'vocabulary-answer', 'vocabulary-feedback', 'check-vocabulary-btn', 'next-vocabulary-btn', 'japanese-to-english');
 
             // --- Verb Conjugation Logic ---
             let currentVerbIndex = 0;
@@ -773,7 +870,7 @@
             // Populate verb list
             verbsData.forEach(verb => {
                 const li = document.createElement('li');
-                li.textContent = `${verb.casual} (To ${verb.english ? verb.english.split('To ')[1] : 'do'})`;
+                li.textContent = `${verb.casual} (To ${verb.english})`;
                 verbListEl.appendChild(li);
             });
 
@@ -867,78 +964,14 @@
             displayExistenceExercise(); // Initial display
 
             // --- Demonstratives Logic ---
-            let currentDemonstrativeIndex = 0;
-            const shuffledDemonstratives = shuffleArray([...demonstrativesExercises]);
-            const demonstrativeSentenceEl = document.getElementById('demonstrative-sentence');
-            const demonstrativeInput = document.getElementById('demonstrative-input');
-            const demonstrativeFeedbackEl = document.getElementById('demonstrative-feedback');
-            const checkDemonstrativeBtn = document.getElementById('check-demonstrative-btn');
-            const nextDemonstrativeBtn = document.getElementById('next-demonstrative-btn');
+            setupQuiz(demonstrativesExercises, 'demonstrative-sentence', 'demonstrative-input', 'demonstrative-feedback', 'check-demonstrative-btn', 'next-demonstrative-btn', 'japanese-to-english');
 
-            function displayDemonstrativeExercise() {
-                const exercise = shuffledDemonstratives[currentDemonstrativeIndex];
-                demonstrativeSentenceEl.textContent = exercise.sentence;
-                demonstrativeInput.value = '';
-                demonstrativeFeedbackEl.textContent = '';
-                demonstrativeFeedbackEl.classList.remove('correct', 'incorrect');
-            }
-
-            checkDemonstrativeBtn.addEventListener('click', () => {
-                const exercise = shuffledDemonstratives[currentDemonstrativeIndex];
-                if (demonstrativeInput.value.toLowerCase().trim() === exercise.correct.toLowerCase()) {
-                    demonstrativeFeedbackEl.textContent = 'Correct!';
-                    demonstrativeFeedbackEl.classList.remove('incorrect');
-                    demonstrativeFeedbackEl.classList.add('correct');
-                } else {
-                    demonstrativeFeedbackEl.textContent = `Incorrect. Correct is "${exercise.correct}".`;
-                    demonstrativeFeedbackEl.classList.remove('correct');
-                    demonstrativeFeedbackEl.classList.add('incorrect');
-                }
-            });
-
-            nextDemonstrativeBtn.addEventListener('click', () => {
-                currentDemonstrativeIndex = (currentDemonstrativeIndex + 1) % shuffledDemonstratives.length;
-                displayDemonstrativeExercise();
-            });
-
-            displayDemonstrativeExercise(); // Initial display
 
             // --- Kanji Numbers Logic ---
-            let currentKanjiNumberIndex = 0;
-            const shuffledKanjiNumbers = shuffleArray([...kanjiNumbersExercises]);
-            const numberToConvertEl = document.getElementById('number-to-convert');
-            const kanjiNumberInput = document.getElementById('kanji-number-input');
-            const kanjiNumberFeedbackEl = document.getElementById('kanji-number-feedback');
-            const checkKanjiNumberBtn = document.getElementById('check-kanji-number-btn');
-            const nextKanjiNumberBtn = document.getElementById('next-kanji-number-btn');
+            setupQuiz(kanjiNumbersExercises, 'number-to-convert', 'kanji-number-input', 'kanji-number-feedback', 'check-kanji-number-btn', 'next-kanji-number-btn', 'number-to-japanese');
 
-            function displayKanjiNumberExercise() {
-                const exercise = shuffledKanjiNumbers[currentKanjiNumberIndex];
-                numberToConvertEl.textContent = exercise.number;
-                kanjiNumberInput.value = '';
-                kanjiNumberFeedbackEl.textContent = '';
-                kanjiNumberFeedbackEl.classList.remove('correct', 'incorrect');
-            }
-
-            checkKanjiNumberBtn.addEventListener('click', () => {
-                const exercise = shuffledKanjiNumbers[currentKanjiNumberIndex];
-                if (kanjiNumberInput.value.toLowerCase().trim() === exercise.japanese.toLowerCase()) {
-                    kanjiNumberFeedbackEl.textContent = 'Correct!';
-                    kanjiNumberFeedbackEl.classList.remove('incorrect');
-                    kanjiNumberFeedbackEl.classList.add('correct');
-                } else {
-                    kanjiNumberFeedbackEl.textContent = `Incorrect. Correct is "${exercise.japanese}".`;
-                    kanjiNumberFeedbackEl.classList.remove('correct');
-                    kanjiNumberFeedbackEl.classList.add('incorrect');
-                }
-            });
-
-            nextKanjiNumberBtn.addEventListener('click', () => {
-                currentKanjiNumberIndex = (currentKanjiNumberIndex + 1) % shuffledKanjiNumbers.length;
-                displayKanjiNumberExercise();
-            });
-
-            displayKanjiNumberExercise(); // Initial display
+            // --- Weekly Days Quiz ---
+            setupQuiz(weeklyDaysData, 'weekly-day-question', 'weekly-day-answer', 'weekly-day-feedback', 'check-weekly-day-btn', 'next-weekly-day-btn', 'japanese-to-english');
 
             // --- Monthly Days Table Population ---
             const monthlyDaysTableBody = document.getElementById('monthly-days-table-body');
@@ -952,98 +985,15 @@
                 monthlyDaysTableBody.appendChild(row);
             });
 
+            // --- Date Conversion Quiz ---
+            setupQuiz(dateConversionExercises, 'date-conversion-question', 'date-conversion-answer', 'date-conversion-feedback', 'check-date-conversion-btn', 'next-date-conversion-btn', 'date-to-japanese');
+
+
             // --- Particles Logic ---
-            let currentParticleIndex = 0;
-            const shuffledParticles = shuffleArray([...particleExercises]);
-            const particleSentenceEl = document.getElementById('particle-sentence');
-            const particleInput = document.getElementById('particle-input');
-            const particleFeedbackEl = document.getElementById('particle-feedback');
-            const checkParticleBtn = document.getElementById('check-particle-btn');
-            const nextParticleBtn = document.getElementById('next-particle-btn');
-
-            function displayParticleExercise() {
-                const exercise = shuffledParticles[currentParticleIndex];
-                particleSentenceEl.textContent = exercise.sentence;
-                particleInput.value = '';
-                particleFeedbackEl.textContent = '';
-                particleFeedbackEl.classList.remove('correct', 'incorrect');
-            }
-
-            checkParticleBtn.addEventListener('click', () => {
-                const exercise = shuffledParticles[currentParticleIndex];
-                const userAnswers = particleInput.value.toLowerCase().trim().split(',').map(s => s.trim());
-                const correctAnswers = exercise.correct.toLowerCase().split(',').map(s => s.trim());
-
-                let isCorrect = true;
-                if (userAnswers.length !== correctAnswers.length) {
-                    isCorrect = false;
-                } else {
-                    for (let i = 0; i < correctAnswers.length; i++) {
-                        // Allow for 'e' or 'ni' as correct for certain direction particles
-                        if ((correctAnswers[i] === 'e' || correctAnswers[i] === 'ni') && (userAnswers[i] === 'e' || userAnswers[i] === 'ni')) {
-                            continue;
-                        }
-                        if (userAnswers[i] !== correctAnswers[i]) {
-                            isCorrect = false;
-                            break;
-                        }
-                    }
-                }
-
-                if (isCorrect) {
-                    particleFeedbackEl.textContent = 'Correct!';
-                    particleFeedbackEl.classList.remove('incorrect');
-                    particleFeedbackEl.classList.add('correct');
-                } else {
-                    particleFeedbackEl.textContent = `Incorrect. Correct is "${exercise.correct}".`;
-                    particleFeedbackEl.classList.remove('correct');
-                    particleFeedbackEl.classList.add('incorrect');
-                }
-            });
-
-            nextParticleBtn.addEventListener('click', () => {
-                currentParticleIndex = (currentParticleIndex + 1) % shuffledParticles.length;
-                displayParticleExercise();
-            });
-
-            displayParticleExercise(); // Initial display
+            setupQuiz(particleExercises, 'particle-sentence', 'particle-input', 'particle-feedback', 'check-particle-btn', 'next-particle-btn', 'fill-in-the-blank');
 
             // --- Hiragana to Romaji Logic ---
-            let currentHiraganaIndex = 0;
-            const shuffledHiragana = shuffleArray([...hiraganaRomajiExercises]);
-            const hiraganaWordEl = document.getElementById('hiragana-word');
-            const romajiInput = document.getElementById('romaji-input');
-            const romajiFeedbackEl = document.getElementById('romaji-feedback');
-            const checkRomajiBtn = document.getElementById('check-romaji-btn');
-            const nextRomajiBtn = document.getElementById('next-romaji-btn');
-
-            function displayHiraganaExercise() {
-                const exercise = shuffledHiragana[currentHiraganaIndex];
-                hiraganaWordEl.textContent = exercise.hiragana;
-                romajiInput.value = '';
-                romajiFeedbackEl.textContent = '';
-                romajiFeedbackEl.classList.remove('correct', 'incorrect');
-            }
-
-            checkRomajiBtn.addEventListener('click', () => {
-                const exercise = shuffledHiragana[currentHiraganaIndex];
-                if (romajiInput.value.toLowerCase().trim() === exercise.romaji.toLowerCase()) {
-                    romajiFeedbackEl.textContent = 'Correct!';
-                    romajiFeedbackEl.classList.remove('incorrect');
-                    romajiFeedbackEl.classList.add('correct');
-                } else {
-                    romajiFeedbackEl.textContent = `Incorrect. Correct is "${exercise.romaji}".`;
-                    romajiFeedbackEl.classList.remove('correct');
-                    romajiFeedbackEl.classList.add('incorrect');
-                }
-            });
-
-            nextRomajiBtn.addEventListener('click', () => {
-                currentHiraganaIndex = (currentHiraganaIndex + 1) % shuffledHiragana.length;
-                displayHiraganaExercise();
-            });
-
-            displayHiraganaExercise(); // Initial display
+            setupQuiz(hiraganaRomajiExercises, 'hiragana-word', 'romaji-input', 'romaji-feedback', 'check-romaji-btn', 'next-romaji-btn', 'hiragana-to-romaji');
         });
     </script>
 </body>
